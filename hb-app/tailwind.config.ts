@@ -11,6 +11,11 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        navigation: "#18222f",
+        review: "#12322f",
+        defaultText: "#f1f3f5",
+        reviewHover: "#13233f",
+        profile: "#0000ff",
       },
     },
   },
