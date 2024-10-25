@@ -1,0 +1,18 @@
+Mongo
+- schema versioning 
+- flexible schemas
+- entities 
+
+Power BI 
+
+AWS
+- S3 bucket
+
+
+
+Features
+- add an index to collection for email, number
+- write functionality for creating a theme 
+- google calendar integrations / tap link and add to their calendar 
+- shared calendars 
+- text when you get an appointment 

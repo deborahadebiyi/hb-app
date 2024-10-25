@@ -1,0 +1,5 @@
+Cmd + shift + L 
+- multi cursor
+
+Cmd + shift + P
+- opens vs code settings 

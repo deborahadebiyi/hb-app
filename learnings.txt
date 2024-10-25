@@ -1,0 +1,14 @@
+<-------Folder structure------>
+- folder names in parentheses are not used as routes 
+e.g (components)
+
+- folder names with brackets have to do with params
+e.g [id]
+
+https://www.youtube.com/watch?v=H0vhkoXljq0&ab_channel=freeCodeCamp.org
+
+33:50
+
+https://www.youtube.com/watch?v=bMHs2pHkbsM&ab_channel=AyyazTech
+
+18:14
