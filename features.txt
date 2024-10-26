@@ -1,16 +1,6 @@
-Mongo
-- schema versioning 
-- flexible schemas
-- entities 
-
-Power BI 
-
-AWS
-- S3 bucket
-
-
-
 Features
+- editing profile 
+use .splice for amending services offered because they're stored in an array
 - add an index to collection for email, number
 - write functionality for creating a theme 
 - google calendar integrations / tap link and add to their calendar 

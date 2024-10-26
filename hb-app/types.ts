@@ -41,6 +41,8 @@ export interface ICustomer {
 
 export interface IBusiness {
   businessId: string;
+  businessName: string;
+  email: string;
   country: string;
   location: string;
   number: string;

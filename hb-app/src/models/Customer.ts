@@ -1,35 +1,27 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 
-export interface IServiceProvider extends Document {
-  spId: string;
-  spName: string;
+export interface ICustomer extends Document {
+  custId: string;
   username: string;
   password: string;
   email: string;
   telephoneNumber: string;
   country: string;
-  location: string;
-  services: string[];
+  location?: string;
+  dateOfBirth?: Date;
   rating: number;
-  isPremium: boolean;
-  isUnlimited: boolean;
 }
 
-const serviceProviderSchema: Schema = new mongoose.Schema({
-  spId: {
+const customerSchema: Schema = new mongoose.Schema({
+  custId: {
     type: String,
     required: true,
     unique: true,
-  },
-  spName: {
-    type: String,
-    required: true,
   },
   username: {
     type: String,
     required: true,
-    unique: true,
   },
   password: {
     type: String,
@@ -51,26 +43,15 @@ const serviceProviderSchema: Schema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true,
   },
-  services: {
-    type: Array,
-    required: true,
+  dateOfBirth: {
+    type: Date,
   },
   rating: {
     type: Number || 0,
   },
-  isPremium: {
-    type: Boolean,
-  },
-  isUnlimited: {
-    type: Boolean,
-  },
 });
 
-const ServiceProvider = mongoose.model<IServiceProvider>(
-  "ServiceProvider",
-  serviceProviderSchema
-);
+const Customer = mongoose.model<ICustomer>("Customer", customerSchema);
 
-export default ServiceProvider;
+export default Customer;

@@ -1,0 +1,15 @@
+Mongo
+- schema versioning 
+- flexible schemas
+- entities 
+- https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/specify-allowed-field-values/#std-label-schema-allowed-field-values
+
+Power BI 
+
+AWS
+- S3 bucket
+
+NextJS 
+- Turbopack https://nextjs.org/blog/turbopack-for-development-stable
+- Stream https://www.youtube.com/watch?v=WLHHzsqGSVQ&t=1s&ab_channel=Vercel
+
