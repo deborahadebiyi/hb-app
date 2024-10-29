@@ -8,9 +8,9 @@ export interface IReview {
   reviewId: string;
   spId: string;
   custId: string;
-  ratingTags: string[];
+  ratingTags?: string[];
   rating: number;
-  text: string;
+  comment?: string;
   likes: number;
   timestamp: Date;
 }

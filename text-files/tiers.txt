@@ -1,0 +1,17 @@
+Basic
+
+landing page + booking 
+onboarding for existing pages 
+reviews 
+calendar syncing 
+booking notifications
+dashboard
+follower updates 
+insights
+- profile views
+- results page occirrence
+- times and dates people select
+- percentage of services they've provided in their area
+- peer data 
+- weekly spotlight (one-off payment)
+

@@ -8,6 +8,10 @@ export interface IServiceProvider extends Document {
   password: string;
   email: string;
   telephoneNumber: string;
+  socialMedia?: object;
+  // followers: number;
+  // followerList: string[];
+  bookingPage?: string;
   country: string;
   location: string;
   services: string[];
@@ -45,6 +49,19 @@ const serviceProviderSchema: Schema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  socialMedia: {
+    type: Object,
+  },
+  // followers: {
+  //   type: Number || 0,
+  // },
+  // followingList: {
+  //   type: Array,
+  //   ref: "Customer",
+  // },
+  bookingPage: {
+    type: String,
+  },
   country: {
     type: String,
     required: true,
@@ -58,7 +75,8 @@ const serviceProviderSchema: Schema = new mongoose.Schema({
     required: true,
   },
   rating: {
-    type: Number || 0,
+    type: Number,
+    default: 0,
   },
   isPremium: {
     type: Boolean,

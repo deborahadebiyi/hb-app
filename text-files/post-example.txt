@@ -1,0 +1,44 @@
+
+In that case, you can still follow the same approach but replace ObjectId references with UUIDs. Here’s how you can modify the schemas to use UUIDs instead of MongoDB's default ObjectId.
+
+Updated Schema
+User Model (with UUID)
+Assuming each user has a UUID, you’ll set the userId as a String to hold the UUID value.
+
+
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
+  userId: { type: String, required: true, unique: true }, // UUID for the user
+  name: String,
+  email: String,
+  // other fields...
+  friends: [{ type: String, ref: 'User' }] // Array of friend UUIDs
+});
+
+const User = mongoose.model('User', userSchema);
+module.exports = User;
+Post Model (with UUID references)
+In the Post schema, replace the ObjectId references with String types to hold UUIDs for userId and authorId.
+
+
+const postSchema = new Schema({
+  content: String,
+  createdAt: { type: Date, default: Date.now },
+  userId: { type: String, ref: 'User', required: true }, // UUID of the user whose page the post is on
+  authorId: { type: String, ref: 'User', required: true } // UUID of the friend who created the post
+});
+
+const Post = mongoose.model('Post', postSchema);
+module.exports = Post;
+Example Usage
+Now, to query posts for a user’s page, you can still use the UUID as the identifier:
+
+Post.find({ userId: user.userId })
+  .populate('userId', 'name')      // Populates the user who owns the page
+  .populate('authorId', 'name')    // Populates the friend who authored the post
+  .exec((err, posts) => {
+    if (err) throw err;
+    console.log(posts);
+  });

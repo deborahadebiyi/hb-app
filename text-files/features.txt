@@ -6,3 +6,4 @@ use .splice for amending services offered because they're stored in an array
 - google calendar integrations / tap link and add to their calendar 
 - shared calendars 
 - text when you get an appointment 
+- themes for landing page 

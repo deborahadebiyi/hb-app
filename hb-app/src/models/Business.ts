@@ -9,6 +9,8 @@ export interface IBusiness extends Document {
   country: string;
   location: string;
   telephoneNumber: string;
+  socialMedia: object;
+  bookingPage?: string;
   address?: object;
   services: string[];
   openingTimes?: object;
@@ -46,6 +48,12 @@ const businessSchema: Schema = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  socialMedia: {
+    type: Object,
+  },
+  bookingPage: {
+    type: String,
+  },
   address: {
     type: Object,
   },
@@ -57,7 +65,8 @@ const businessSchema: Schema = new mongoose.Schema({
     type: Object,
   },
   rating: {
-    type: Number || 0,
+    type: Number,
+    default: 0,
   },
 });
 
