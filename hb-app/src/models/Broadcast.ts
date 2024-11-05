@@ -5,7 +5,6 @@ export interface IBroadcast extends Document {
   broadcastId: string;
   textField: string;
   timestamp: Date;
-  spId: string;
 }
 
 const broadcastSchema: Schema = new mongoose.Schema({
@@ -21,10 +20,6 @@ const broadcastSchema: Schema = new mongoose.Schema({
   timestamp: {
     type: Date,
     default: Date.now,
-  },
-  spId: {
-    type: String,
-    ref: "ServiceProvider",
   },
 });
 

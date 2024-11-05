@@ -3,6 +3,9 @@ Mongo
 - flexible schemas
 - entities 
 - https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/specify-allowed-field-values/#std-label-schema-allowed-field-values
+- mongo model mutli reference
+https://www.mongodb.com/community/forums/t/can-a-reference-field-in-a-mongoose-schema-pertain-to-more-than-one-data-model/153708/3
+-
 
 Power BI 
 

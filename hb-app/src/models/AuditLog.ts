@@ -1,0 +1,26 @@
+import mongoose from "mongoose";
+import { Document, Schema } from "mongoose";
+
+export interface IAuditLog extends Document {
+  accountId: string;
+  eventName: string;
+  timestamp: string;
+}
+
+const auditLogSchema: Schema = new mongoose.Schema({
+  accountId: {
+    type: String,
+    required: true,
+  },
+  eventName: {
+    type: String,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const AuditLog = mongoose.model<IAuditLog>("AuditLog", auditLogSchema);
+
+export default AuditLog;

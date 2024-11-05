@@ -1,4 +1,5 @@
 Features
+- need an error page
 - editing profile 
 use .splice for amending services offered because they're stored in an array
 - add an index to collection for email, number
@@ -7,3 +8,37 @@ use .splice for amending services offered because they're stored in an array
 - shared calendars 
 - text when you get an appointment 
 - themes for landing page 
+
+
+managing subscription
+- if a payment hasn't been receieved, isPremium is set to false 
+how to solve late payment, is landing page auto deleted
+or a grace period of 3 days then delete landing page 
+
+
+audit logs 
+
+AccountCreated 
+AccountSubscriptionStarted
+AccountSubscriptionEnded
+AccountDeleted
+AccountPasswordChanged
+AccountLogin
+AccountLogout
+
+accountId: string,
+timestamp: Date.now
+eventName: enum (string)
+lineage: {
+    sourceIdentifier: web || app
+}
+
+
+need to hash the password before saving in the db 
+need a function to un hash and check before signing a user in 
+
+???if we add a followingList  field for SPs 
+- they can use those lists for 
+- giveaways 
+
+need to consider enum for services

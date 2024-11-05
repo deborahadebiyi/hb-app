@@ -21,6 +21,15 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "src/models/ServiceProvider.ts",
+    "../todelete/OldCustomer.ts",
+    "../todelete/OldBusiness.ts",
+    "../todelete/OldServiceProvider.ts"
+  ],
   "exclude": ["node_modules"]
 }

@@ -8,6 +8,7 @@ export interface IReview {
   reviewId: string;
   spId: string;
   custId: string;
+  username: string;
   ratingTags?: string[];
   rating: number;
   comment?: string;
@@ -21,18 +22,26 @@ export interface IServiceProvider {
   username: string;
   password: string;
   email: string;
-  number: string;
+  telephoneNumber: string;
+  followers: number;
+  socialMedia?: object;
+  bookingPageUrl?: string;
   country: string;
   location: string;
   services: string[];
   rating: number;
+  isPremium: boolean;
+  premiumSubscriptionDate?: Date;
+  isUnlimited: boolean;
 }
 
 export interface ICustomer {
   custId: string;
   username: string;
   email: string;
-  number: string;
+  telephoneNumber: string;
+  following: number;
+  followingList: string[];
   country: string;
   location?: string;
   dateOfBirth?: Date;
@@ -43,6 +52,8 @@ export interface IBusiness {
   businessId: string;
   businessName: string;
   email: string;
+  socialMedia?: object;
+  followers: number;
   country: string;
   location: string;
   number: string;

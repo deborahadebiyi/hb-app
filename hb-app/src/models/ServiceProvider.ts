@@ -1,94 +1,17 @@
-import mongoose from "mongoose";
-import { Document, Schema } from "mongoose";
+import Account from "./Account";
+import { IProviderProfile, providerProfileSchema } from "./ProviderProfile";
 
-export interface IServiceProvider extends Document {
-  spId: string;
-  spName: string;
-  username: string;
-  password: string;
-  email: string;
-  telephoneNumber: string;
-  socialMedia?: object;
-  // followers: number;
-  // followerList: string[];
-  bookingPage?: string;
-  country: string;
-  location: string;
-  services: string[];
-  rating: number;
-  isPremium: boolean;
-  isUnlimited: boolean;
+export interface IServiceProvider extends IProviderProfile {
+  bookingPageUrl: string;
 }
 
-const serviceProviderSchema: Schema = new mongoose.Schema({
-  spId: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  spName: {
-    type: String,
-    required: true,
-  },
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  telephoneNumber: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  socialMedia: {
-    type: Object,
-  },
-  // followers: {
-  //   type: Number || 0,
-  // },
-  // followingList: {
-  //   type: Array,
-  //   ref: "Customer",
-  // },
-  bookingPage: {
-    type: String,
-  },
-  country: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    required: true,
-  },
-  services: {
-    type: Array,
-    required: true,
-  },
-  rating: {
-    type: Number,
-    default: 0,
-  },
-  isPremium: {
-    type: Boolean,
-  },
-  isUnlimited: {
-    type: Boolean,
-  },
-});
-
-const ServiceProvider = mongoose.model<IServiceProvider>(
+const ServiceProvider = Account.discriminator<IServiceProvider>(
   "ServiceProvider",
-  serviceProviderSchema
+  providerProfileSchema.clone().add({
+    bookingPageUrl: {
+      type: String,
+    },
+  })
 );
 
 export default ServiceProvider;

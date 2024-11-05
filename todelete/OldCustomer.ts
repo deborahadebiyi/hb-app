@@ -7,8 +7,8 @@ export interface ICustomer extends Document {
   password: string;
   email: string;
   telephoneNumber: string;
-  //   following: number;
-  //   followingList: string[];
+  following: number;
+  followingList: string[];
   country: string;
   location?: string;
   dateOfBirth?: Date;
@@ -39,13 +39,14 @@ const customerSchema: Schema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  //   following: {
-  //     type: Number || 0,
-  //   },
-  //   followingList: {
-  //     type: Array,
-  //     ref: "ServiceProvider",
-  //   },
+  following: {
+    type: Number,
+    default: 0,
+  },
+  followingList: {
+    type: Array,
+    ref: "ServiceProvider",
+  },
   country: {
     type: String,
     required: true,
