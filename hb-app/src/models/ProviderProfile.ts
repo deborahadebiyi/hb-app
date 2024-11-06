@@ -4,14 +4,15 @@ import mongoose from "mongoose";
 import {
   premiumSubscriptionSchema,
   unlimitedSubscriptionSchema,
-} from "./Subscriptions";
-import { socialMediaSchema } from "./SocialMedia";
+} from "./reference-models/Subscriptions";
+import { socialMediaSchema } from "./reference-models/SocialMedia";
 
 export interface IProviderProfile extends IAccount {
   providerName: string;
   followers: number;
   socialMedia: object;
   location: string;
+  serviceCategory: string[];
   services: string[];
   premium: object;
   unlimited: object;
@@ -31,10 +32,12 @@ export const providerProfileSchema: Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  services: {
+  serviceCategory: {
     type: Array,
     enum: [
-      "hair",
+      "hair stylist",
+      "barber",
+      "makeup artist",
       "nails",
       "face + body art",
       "aesthetic treatments",
@@ -47,6 +50,10 @@ export const providerProfileSchema: Schema = new mongoose.Schema({
       "brows",
     ],
     required: true,
+  },
+  services: {
+    type: Array,
+    default: [],
   },
   premium: premiumSubscriptionSchema,
   unlimited: unlimitedSubscriptionSchema,

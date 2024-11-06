@@ -10,6 +10,8 @@ const ServiceProvider = Account.discriminator<IServiceProvider>(
   providerProfileSchema.clone().add({
     bookingPageUrl: {
       type: String,
+      default: "",
+      required: true,
     },
   })
 );

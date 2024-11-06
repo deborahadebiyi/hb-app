@@ -1,13 +1,23 @@
-import Account, { IAccount } from "./Account";
-import mongoose from "mongoose";
+import Account from "./Account";
+import { addressSchema } from "./reference-models/Address";
+import { openingTimesSchema } from "./reference-models/OpeningTimes";
+import { IProviderProfile, providerProfileSchema } from "./ProviderProfile";
 
-export interface IBusiness extends Document {
-  businessName: string;
-  location: string;
-  socialMedia: object;
-  followers: number;
+export interface IBusiness extends IProviderProfile {
   website?: string;
   address?: object;
-  services: string[];
   openingTimes?: object;
 }
+
+const Business = Account.discriminator<IBusiness>(
+  "Business",
+  providerProfileSchema.clone().add({
+    website: {
+      type: String,
+    },
+    address: addressSchema,
+    openingTimes: openingTimesSchema,
+  })
+);
+
+export default Business;
