@@ -10,6 +10,7 @@ export interface IAuditLog extends Document {
 const auditLogSchema: Schema = new mongoose.Schema({
   accountId: {
     type: String,
+    ref: "Account",
     required: true,
   },
   eventName: {

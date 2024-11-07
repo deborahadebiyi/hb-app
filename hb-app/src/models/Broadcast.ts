@@ -2,12 +2,18 @@ import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 
 export interface IBroadcast extends Document {
+  accountId: string;
   broadcastId: string;
   textField: string;
   timestamp: Date;
 }
 
 const broadcastSchema: Schema = new mongoose.Schema({
+  accountId: {
+    type: String,
+    ref: "Account",
+    required: true,
+  },
   broadcastId: {
     type: String,
     required: true,

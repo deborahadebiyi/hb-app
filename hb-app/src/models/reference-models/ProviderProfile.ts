@@ -1,11 +1,11 @@
-import { IAccount } from "./Account";
+import { IAccount } from "../user-models/Account";
 import { Schema } from "mongoose";
 import mongoose from "mongoose";
 import {
   premiumSubscriptionSchema,
   unlimitedSubscriptionSchema,
-} from "./reference-models/Subscriptions";
-import { socialMediaSchema } from "./reference-models/SocialMedia";
+} from "./Subscriptions";
+import { socialMediaSchema } from "./SocialMedia";
 
 export interface IProviderProfile extends IAccount {
   providerName: string;

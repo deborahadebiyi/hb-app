@@ -3,8 +3,7 @@ import { Document, Schema } from "mongoose";
 
 export interface IReview extends Document {
   reviewId: string;
-  spId: string;
-  custId: string;
+  accountId: string;
   username: string;
   ratingTags: string[];
   rating: number;
@@ -19,13 +18,15 @@ const reviewSchema: Schema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  spId: {
+  accountId: {
     type: String,
-    ref: "ServiceProvider",
+    ref: "Account",
+    required: true,
   },
-  custId: {
+  username: {
     type: String,
-    ref: "Customer",
+    ref: "Account",
+    required: true,
   },
   ratingTags: {
     type: Array,

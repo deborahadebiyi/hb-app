@@ -1,5 +1,8 @@
 import Account from "./Account";
-import { IProviderProfile, providerProfileSchema } from "./ProviderProfile";
+import {
+  IProviderProfile,
+  providerProfileSchema,
+} from "../reference-models/ProviderProfile";
 
 export interface IServiceProvider extends IProviderProfile {
   bookingPageUrl: string;

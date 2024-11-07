@@ -26,7 +26,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/models/ServiceProvider.ts",
+    "src/models/user-models/ServiceProvider.ts",
     "../todelete/OldCustomer.ts",
     "../todelete/OldBusiness.ts",
     "../todelete/OldServiceProvider.ts"
