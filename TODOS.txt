@@ -1,0 +1,43 @@
+Create booking page schema 
+- functionality to find services on service list (search)
+- serach functionality parameters
+- service list builder page 
+- cart functionality
+    - if role is customer there should be a cart icon
+    - if role is sp there should be an edit button in landing page editor mode 
+
+- implement auth using lucia doc
+    - https://lucia-auth.com/sessions/cookies/
+
+- mongo queries and efficiency
+    - https://www.mongodb.com/docs/manual/applications/indexes/ 
+    - https://www.mongodb.com/docs/atlas/atlas-ui/indexes/
+
+- graphql
+    - to include or not ?
+
+- check mongoose discriminator implementation
+    - add tests
+    - https://techinsights.manisuec.com/mongodb/mongoose-discriminator-non-dry-way-inherit-properties/
+    - https://www.mongodb.com/community/forums/t/can-a-reference-field-in-a-mongoose-schema-pertain-to-more-than-one-data-model/153708/3
+
+- conditionally render forms 
+    - https://www.freecodecamp.org/news/react-conditional-rendering/
+    - register form
+    - review form
+    - landing page creator
+
+- services model 
+    - how to store duration, enum ?
+
+
+- providerprofile
+    - how to store images
+    - business profile offering
+    - followers
+
+- social media clone tutorial
+    - https://www.youtube.com/watch?v=TyV12oBDsYI&ab_channel=CodinginFlow
+    - important from 1h12
+        - acebook clone 
+        - https://github.com/deborahadebiyi/acebook-Team2/blob/master/controllers/profile.js

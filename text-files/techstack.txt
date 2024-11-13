@@ -11,6 +11,7 @@ Power BI
 
 AWS
 - S3 bucket
+- needed for storing images
 
 NextJS 
 - Turbopack https://nextjs.org/blog/turbopack-for-development-stable

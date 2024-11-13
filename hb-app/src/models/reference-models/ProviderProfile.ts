@@ -6,14 +6,16 @@ import {
   unlimitedSubscriptionSchema,
 } from "./Subscriptions";
 import { socialMediaSchema } from "./SocialMedia";
+import { IService, serviceSchema } from "./Service";
 
 export interface IProviderProfile extends IAccount {
   providerName: string;
+  profileImage?: string;
   followers: number;
-  socialMedia: object;
+  socialMedia?: object;
   location: string;
   serviceCategory: string[];
-  services: string[];
+  services: IService[];
   premium: object;
   unlimited: object;
 }
@@ -22,6 +24,9 @@ export const providerProfileSchema: Schema = new mongoose.Schema({
   providerName: {
     type: String,
     required: true,
+  },
+  profileImage: {
+    type: String,
   },
   followers: {
     type: Number,
@@ -51,10 +56,7 @@ export const providerProfileSchema: Schema = new mongoose.Schema({
     ],
     required: true,
   },
-  services: {
-    type: Array,
-    default: [],
-  },
+  services: serviceSchema,
   premium: premiumSubscriptionSchema,
   unlimited: unlimitedSubscriptionSchema,
 });

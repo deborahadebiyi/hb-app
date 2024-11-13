@@ -1,25 +1,24 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 
-export interface IBroadcast extends Document {
+export interface IComment extends Document {
+  commentId: string;
   accountId: string;
-  broadcastId: string;
   textField: string;
   timestamp: Date;
 }
 
-const broadcastSchema: Schema = new mongoose.Schema({
+export const commentSchema: Schema = new mongoose.Schema({
+  commentId: {
+    type: String,
+  },
   accountId: {
     type: String,
     ref: "Account",
     required: true,
   },
-  broadcastId: {
-    type: String,
-  },
   textField: {
     type: String,
-    required: true,
     maxlength: 350,
   },
   timestamp: {
@@ -28,6 +27,6 @@ const broadcastSchema: Schema = new mongoose.Schema({
   },
 });
 
-const Broadcast = mongoose.model<IBroadcast>("Broadcast", broadcastSchema);
+const Comment = mongoose.model<IComment>("Comment", commentSchema);
 
-export default Broadcast;
+export default Comment;

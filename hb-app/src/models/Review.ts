@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
+import { commentSchema, IComment } from "./reference-models/Comment";
 
 export interface IReview extends Document {
   reviewId: string;
@@ -7,7 +8,8 @@ export interface IReview extends Document {
   username: string;
   ratingTags: string[];
   rating: number;
-  comment: string;
+  textField?: string;
+  comment?: IComment;
   likes: number;
   timestamp: Date;
 }
@@ -34,8 +36,12 @@ const reviewSchema: Schema = new mongoose.Schema({
   rating: {
     type: Number,
   },
-  comment: {
+  textField: {
     type: String,
+    maxlength: 350,
+  },
+  comment: {
+    type: commentSchema,
   },
   likes: {
     type: Number,
