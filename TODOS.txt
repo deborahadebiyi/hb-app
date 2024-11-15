@@ -16,6 +16,15 @@ Create booking page schema
 - graphql
     - to include or not ?
 
+- conditional rendering
+    - register form
+    - reviews form
+
+- service list page
+    - storing images (max limit?)
+    - https://www.reddit.com/r/aws/comments/zh2i2h/right_s3_cloudfront_strategy_for_storing_and/?rdt=38845
+
+
 - check mongoose discriminator implementation
     - add tests
     - https://techinsights.manisuec.com/mongodb/mongoose-discriminator-non-dry-way-inherit-properties/
