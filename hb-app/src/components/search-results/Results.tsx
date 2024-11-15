@@ -1,4 +1,3 @@
-import React from "react";
 import SpProfile from "../../pages/service-provider/SpProfile";
 
 const Results = () => {

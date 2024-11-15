@@ -1,5 +1,3 @@
-import React from "react";
-
 const ManualReview = () => {
   // requires a form
   // this will be sent to be manually removed

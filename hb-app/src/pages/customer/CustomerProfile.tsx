@@ -1,5 +1,3 @@
-import React from "react";
-
 const CustomerProfile = () => {
   //needs logic for visibility
   return (

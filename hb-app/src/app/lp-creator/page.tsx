@@ -1,7 +1,3 @@
-import React from "react";
-
-const LpCreator = () => {
+export default function LpCreator() {
   return <div>Lp Creator</div>;
-};
-
-export default LpCreator;
+}

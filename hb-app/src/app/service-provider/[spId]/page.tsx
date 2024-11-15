@@ -1,11 +1,10 @@
-import React from "react";
 import { Params } from "../../../../types";
 import SpProfile from "@/pages/service-provider/SpProfile";
 // import dbConnect from "@/lib/db";
 // import ServiceProvider from "@/models/ServiceProvider";
 // import { NextResponse } from "next/server";
 
-const ServiceProviderProfile = ({ params }: { params: Params }) => {
+export default function ServiceProviderProfile({ params }: { params: Params }) {
   //   const getProfile = async () => {
   //     await dbConnect();
 
@@ -21,6 +20,4 @@ const ServiceProviderProfile = ({ params }: { params: Params }) => {
       <SpProfile />;
     </div>
   );
-};
-
-export default ServiceProviderProfile;
+}

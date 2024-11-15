@@ -1,7 +1,3 @@
-import React from "react";
-
-const Homepage = () => {
+export default function Homepage() {
   return <div>Welcome to HB app</div>;
-};
-
-export default Homepage;
+}

@@ -1,5 +1,3 @@
-import React from "react";
-
 const Ratings = () => {
   // needs logic for calculating rating after
   //a new review is made
