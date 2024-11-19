@@ -10,6 +10,7 @@ export interface IAccount extends Document {
   telephoneNumber?: string;
   country: string;
   rating: number;
+  ratingCount: number;
   role: string;
 }
 const accountSchema: Schema = new mongoose.Schema(
@@ -46,6 +47,10 @@ const accountSchema: Schema = new mongoose.Schema(
       required: true,
     },
     rating: {
+      type: Number,
+      default: 0,
+    },
+    ratingCount: {
       type: Number,
       default: 0,
     },
