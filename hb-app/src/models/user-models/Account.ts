@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 const options = { discriminatorKey: "kind" };
 
 export interface IAccount extends Document {
@@ -20,6 +21,7 @@ const accountSchema: Schema = new mongoose.Schema(
       required: true,
       unique: true,
       index: true,
+      default: uuidv4(),
     },
     username: {
       type: String,

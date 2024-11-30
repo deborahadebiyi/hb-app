@@ -2,6 +2,8 @@ import { IAccount } from "../user-models/Account";
 import { Schema } from "mongoose";
 import mongoose from "mongoose";
 import {
+  IPremium,
+  IUnlimited,
   premiumSubscriptionSchema,
   unlimitedSubscriptionSchema,
 } from "./Subscriptions";
@@ -16,8 +18,8 @@ export interface IProviderProfile extends IAccount {
   location: string;
   serviceCategory: string[];
   services: IService[];
-  premium: object;
-  unlimited: object;
+  premium: IPremium;
+  unlimited: IUnlimited;
 }
 
 export const providerProfileSchema: Schema = new mongoose.Schema({
@@ -53,6 +55,8 @@ export const providerProfileSchema: Schema = new mongoose.Schema({
       "massage",
       "lashes",
       "brows",
+      "fitness",
+      "baking",
     ],
     required: true,
   },

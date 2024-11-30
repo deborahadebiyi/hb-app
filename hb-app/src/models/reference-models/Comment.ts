@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IComment extends Document {
   commentId: string;
@@ -11,6 +12,7 @@ export interface IComment extends Document {
 export const commentSchema: Schema = new mongoose.Schema({
   commentId: {
     type: String,
+    default: uuidv4(),
   },
   accountId: {
     type: String,

@@ -8,6 +8,7 @@ export interface ISocialMedia extends Document {
   facebook?: string;
   twitter?: string;
   snapchat?: string;
+  businessEmail?: string;
 }
 
 export const socialMediaSchema: Schema = new mongoose.Schema({
@@ -27,6 +28,9 @@ export const socialMediaSchema: Schema = new mongoose.Schema({
     type: String,
   },
   snapchat: {
+    type: String,
+  },
+  businessEmail: {
     type: String,
   },
 });

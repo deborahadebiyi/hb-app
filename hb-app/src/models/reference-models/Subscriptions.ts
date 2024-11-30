@@ -1,16 +1,17 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IPremium extends Document {
-  subId: string;
-  spId: string;
+  subscriptionId: string;
+  providerId: string;
   isPremium: boolean;
   premiumStartDate: Date;
   premiumEndDate: Date;
 }
 
 export interface IUnlimited extends Document {
-  subId: string;
+  subscriptionId: string;
   spId: string;
   isUnlimited: boolean;
   unlimitedStartDate: Date;
@@ -18,12 +19,13 @@ export interface IUnlimited extends Document {
 }
 
 export const premiumSubscriptionSchema: Schema = new mongoose.Schema({
-  subId: {
+  subscriptionId: {
     type: String,
     required: true,
     unique: true,
+    default: uuidv4(),
   },
-  spId: {
+  providerId: {
     type: String,
     ref: "ServiceProvider",
   },
@@ -39,10 +41,11 @@ export const premiumSubscriptionSchema: Schema = new mongoose.Schema({
 });
 
 export const unlimitedSubscriptionSchema: Schema = new mongoose.Schema({
-  subId: {
+  subscriptionId: {
     type: String,
     required: true,
     unique: true,
+    default: uuidv4(),
   },
   spId: {
     type: String,

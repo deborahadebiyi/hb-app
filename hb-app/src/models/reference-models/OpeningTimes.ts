@@ -1,37 +1,47 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 
-export interface IOpeningTimes extends Document {
-  monday?: string;
-  tuesday?: string;
-  wednesday?: string;
-  thursday?: string;
-  friday?: string;
-  saturday?: string;
-  sunday?: string;
+export interface IOpeningTime {
+  open: string;
+  close: string;
 }
+
+export interface IOpeningTimes extends Document {
+  monday?: IOpeningTime;
+  tuesday?: IOpeningTime;
+  wednesday?: IOpeningTime;
+  thursday?: IOpeningTime;
+  friday?: IOpeningTime;
+  saturday?: IOpeningTime;
+  sunday?: IOpeningTime;
+}
+
+export const openingTimeSchema: Schema = new mongoose.Schema({
+  open: { type: String, required: true },
+  close: { type: String, required: true },
+});
 
 export const openingTimesSchema: Schema = new mongoose.Schema({
   monday: {
-    type: String,
+    type: openingTimeSchema,
   },
   tuesday: {
-    type: String,
+    type: openingTimeSchema,
   },
   wednesday: {
-    type: String,
+    type: openingTimeSchema,
   },
   thursday: {
-    type: String,
+    type: openingTimeSchema,
   },
   friday: {
-    type: String,
+    type: openingTimeSchema,
   },
   saturday: {
-    type: String,
+    type: openingTimeSchema,
   },
   sunday: {
-    type: String,
+    type: openingTimeSchema,
   },
 });
 

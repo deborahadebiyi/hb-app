@@ -4,9 +4,9 @@ import { Document, Schema } from "mongoose";
 export interface IAddress extends Document {
   line1: string;
   line2?: string;
-  city: string;
-  county: string;
-  postcode: string;
+  cityTown: string;
+  countyState: string;
+  postZipcode: string;
 }
 
 export const addressSchema: Schema = new mongoose.Schema({
@@ -16,13 +16,13 @@ export const addressSchema: Schema = new mongoose.Schema({
   line2: {
     type: String,
   },
-  city: {
+  cityTown: {
     type: String,
   },
-  county: {
+  countyState: {
     type: String,
   },
-  postcode: {
+  postZipcode: {
     type: String,
   },
 });

@@ -1,32 +1,38 @@
 import Account, { IAccount } from "./Account";
 import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 export interface ICustomer extends IAccount {
-  fullName: string;
+  firstName: string;
+  lastName: string;
   following: number;
   followingList: string[];
   dateOfBirth: Date;
 }
 
-const Customer = Account.discriminator<ICustomer>(
-  "Customer",
-  new mongoose.Schema({
-    fullName: {
-      type: String,
-      required: true,
-    },
-    following: {
-      type: Number,
-      default: 0,
-    },
-    followingList: {
-      type: Array,
-      default: [],
-    },
-    dateOfBirth: {
-      type: Date,
-    },
-  })
-);
+export const customerSchema: Schema = new mongoose.Schema({
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
+    type: String,
+    required: true,
+  },
+  following: {
+    type: Number,
+    default: 0,
+  },
+  followingList: {
+    type: Array,
+    default: [],
+  },
+  dateOfBirth: {
+    type: Date,
+  },
+});
 
-export default Customer;
+export const Customer = Account.discriminator<IAccount>(
+  "Customer",
+  customerSchema
+);

@@ -1,10 +1,12 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 import { commentSchema, IComment } from "./reference-models/Comment";
 
 export interface IReview extends Document {
   reviewId: string;
-  accountId: string;
+  providerId: string;
+  customerId: string;
   username: string;
   ratingTags: string[];
   rating: number;
@@ -19,8 +21,14 @@ const reviewSchema: Schema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
+    default: uuidv4(),
   },
   accountId: {
+    type: String,
+    ref: "Account",
+    required: true,
+  },
+  customerId: {
     type: String,
     ref: "Account",
     required: true,

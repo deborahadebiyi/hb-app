@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 
 export interface ISearch extends Document {
-  query?: string;
+  query: string; // will need to do some sort of sanitising
   searchParams?: string[];
   timestamp: Date;
 }

@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
+import { v4 as uuidv4 } from "uuid";
 
 export interface IBroadcast extends Document {
   accountId: string;
@@ -16,6 +17,7 @@ const broadcastSchema: Schema = new mongoose.Schema({
   },
   broadcastId: {
     type: String,
+    default: uuidv4(),
   },
   textField: {
     type: String,

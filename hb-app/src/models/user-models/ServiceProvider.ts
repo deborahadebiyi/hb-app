@@ -1,22 +1,27 @@
-import Account from "./Account";
-import {
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
+
+import ProviderProfile, {
   IProviderProfile,
-  providerProfileSchema,
 } from "../reference-models/ProviderProfile";
 
 export interface IServiceProvider extends IProviderProfile {
-  bookingPageUrl: string;
+  extraOfferings?: string[];
 }
 
-const ServiceProvider = Account.discriminator<IServiceProvider>(
-  "ServiceProvider",
-  providerProfileSchema.clone().add({
-    bookingPageUrl: {
-      type: String,
-      default: "",
-      required: true,
-    },
-  })
-);
+export const serviceproviderSchema: Schema = new mongoose.Schema({
+  extraOfferings: {
+    type: Array,
+    enum: [
+      "neurodiverse friendly",
+      "child friendly",
+      "pet friendly",
+      "accessible",
+    ],
+  },
+});
 
-export default ServiceProvider;
+export const ServiceProvider = ProviderProfile.discriminator<IServiceProvider>(
+  "ServiceProvider",
+  serviceproviderSchema
+);
