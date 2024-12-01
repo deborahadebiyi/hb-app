@@ -35,7 +35,7 @@ lineage: {
 }
 
 
-need to hash the password before saving in the db 
+need to hash the password before saving in the db  
 need a function to un hash and check before signing a user in 
 
 ???if we add a followingList  field for SPs 
@@ -43,3 +43,5 @@ need a function to un hash and check before signing a user in
 - giveaways 
 
 need to consider enum for services
+
+a18eae
