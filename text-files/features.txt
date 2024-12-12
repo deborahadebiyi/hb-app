@@ -19,13 +19,17 @@ or a grace period of 3 days then delete landing page
 audit logs 
 
 AccountCreated 
+AccountVerified
 AccountSubscriptionStarted
 AccountSubscriptionEnded
 AccountDeleted
 AccountForgottenPassword
-AccountPasswordChanged
+AccountPasswordChanged /
 AccountLogin
 AccountLogout
+AccountEmailAddressUpdated /
+AccountTelephoneNumberUpdated /
+AccountUsernameChanged /
 
 accountId: string,
 timestamp: Date.now

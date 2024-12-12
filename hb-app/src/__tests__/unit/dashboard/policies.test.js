@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Dashboard from "../../../app/dashboard/page";
+import Policies from "../../../app/dashboard/policies/page";
 
-describe("Dashboard", () => {
+describe("Policies", () => {
   it("renders a heading", () => {
-    render(<Dashboard />);
+    render(<Policies />);
 
     const heading = screen.getByRole("heading", { level: 1 });
 

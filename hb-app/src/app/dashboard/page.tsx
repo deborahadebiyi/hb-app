@@ -1,3 +1,8 @@
 export default function Dashboard() {
-  return <h1>My Dashboard</h1>;
+  return (
+    <h1 className="text-defaultText font-extrabold text-[44px]">
+      My Dashboard
+      {/* add skeleton for each different page e.g a bookings table skeleton but attach those to links */}
+    </h1>
+  );
 }

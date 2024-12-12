@@ -9,17 +9,19 @@ export interface IAccount extends Document {
   password: string;
   email: string;
   telephoneNumber?: string;
+  isVerified: boolean;
   country: string;
   rating: number;
   ratingCount: number;
   role: string;
+  accountCreatedAt: Date;
 }
 const accountSchema: Schema = new mongoose.Schema(
   {
     accountId: {
       type: String,
       required: true,
-      unique: true,
+      unique: true, // ? might not be necessary, uuids should be unique
       index: true,
       default: uuidv4(),
     },
@@ -35,14 +37,18 @@ const accountSchema: Schema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: true,
+      required: [true, "Email is required"],
       unique: true,
       index: true,
     },
     telephoneNumber: {
       type: String,
-      required: true,
+      required: [true, "contact number is required"],
       unique: true,
+    },
+    isVerified: {
+      type: Boolean,
+      default: false,
     },
     country: {
       type: String,
@@ -60,6 +66,10 @@ const accountSchema: Schema = new mongoose.Schema(
       type: String,
       enum: ["serviceprovider", "customer", "business"],
       required: true,
+    },
+    accountCreatedAt: {
+      type: Date,
+      default: Date.now,
     },
   },
   options

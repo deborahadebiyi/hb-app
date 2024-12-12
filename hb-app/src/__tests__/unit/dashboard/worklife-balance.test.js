@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Dashboard from "../../../app/dashboard/page";
+import WorkLifeBalance from "../../../app/dashboard/worklife-balance/page";
 
-describe("Dashboard", () => {
+describe("WorkLifeBalance", () => {
   it("renders a heading", () => {
-    render(<Dashboard />);
+    render(<WorkLifeBalance />);
 
     const heading = screen.getByRole("heading", { level: 1 });
 

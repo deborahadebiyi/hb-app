@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
-import Dashboard from "../../../app/dashboard/page";
+import Bookings from "../../../app/dashboard/bookings/page";
 
-describe("Dashboard", () => {
+describe("Bookings", () => {
   it("renders a heading", () => {
-    render(<Dashboard />);
+    render(<Bookings />);
 
     const heading = screen.getByRole("heading", { level: 1 });
 

@@ -1,4 +1,4 @@
-// jest.config.js
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const nextJest = require("next/jest");
 
 const createJestConfig = nextJest({
@@ -8,7 +8,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   testEnvironment: "jsdom",
   transform: {
-    "^.+\\.[tj]sx?$": "babel-jest", // Use babel-jest for transforming files
+    "^.+\\.(js|jsx|ts|tsx)$": "ts-jest", // Use ts-jest for transforming files
   },
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1", // Adjust for your project structure

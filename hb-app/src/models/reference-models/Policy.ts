@@ -10,7 +10,12 @@ export interface IPolicy extends Document {
   lateDropOff: number;
   prepRules: string;
   dropOffTime: string;
+  defaultPolicies: string[];
   misc: { heading: string; textField: string }[];
+}
+
+export interface IPolicy {
+  something: string;
 }
 
 export const policySchema: Schema = new mongoose.Schema({
@@ -33,6 +38,9 @@ export const policySchema: Schema = new mongoose.Schema({
   },
   lateDropOff: {
     type: Number,
+  },
+  defaultPolicies: {
+    type: Array,
   },
   prepRules: {
     type: String,
