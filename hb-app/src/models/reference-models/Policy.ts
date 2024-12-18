@@ -14,10 +14,6 @@ export interface IPolicy extends Document {
   misc: { heading: string; textField: string }[];
 }
 
-export interface IPolicy {
-  something: string;
-}
-
 export const policySchema: Schema = new mongoose.Schema({
   providerId: {
     type: String,

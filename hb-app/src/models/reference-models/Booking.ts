@@ -12,8 +12,8 @@ export interface IBooking extends Document {
   servicesBooked: string[];
   bookingAmount: number;
   outstandingAmount: number;
-  noShow: boolean;
-  isReviewed: boolean;
+  isCustomerReviewed: boolean;
+  isServiceProviderReviewed: boolean;
 }
 
 export const bookingSchema: Schema = new mongoose.Schema({
@@ -52,5 +52,14 @@ export const bookingSchema: Schema = new mongoose.Schema({
   },
   bookingAmount: {
     type: Number,
+  },
+  outstandingAmount: {
+    type: Number,
+  },
+  isCustomerReviewed: {
+    type: Boolean,
+  },
+  isServiceProviderReviewed: {
+    type: Boolean,
   },
 });

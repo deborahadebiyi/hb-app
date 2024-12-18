@@ -1,0 +1,25 @@
+Search Comments by Content and Author's Username
+If you want to search comments by keywords in the content field and filter by the author's username:
+
+typescript
+Copy code
+async function searchCommentsByContentAndAuthor(keyword: string, authorUsername: string) {
+  const comments = await CommentModel.find({
+    content: { $regex: keyword, $options: "i" }, // Case-insensitive keyword search
+  })
+    .populate({
+      path: "authorId",
+      model: "User",
+      match: { username: authorUsername }, // Filter by username
+      select: "username accountId",
+    })
+    .exec();
+
+  comments.forEach((comment) => {
+    if (comment.authorId) {
+      console.log(`Comment by ${comment.authorId.username}: ${comment.content}`);
+    }
+  });
+
+  return comments.filter((comment) => comment.authorId); // Filter out unmatched authors
+}

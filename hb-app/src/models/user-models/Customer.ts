@@ -7,6 +7,7 @@ export interface ICustomer extends IAccount {
   lastName: string;
   following: number;
   followingList: string[];
+  watchList: string[];
   dateOfBirth: Date;
 }
 
@@ -22,6 +23,10 @@ export const customerSchema: Schema = new mongoose.Schema({
   following: {
     type: Number,
     default: 0,
+  },
+  watchList: {
+    type: Array,
+    default: [],
   },
   followingList: {
     type: Array,
