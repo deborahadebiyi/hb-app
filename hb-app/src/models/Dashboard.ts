@@ -10,7 +10,7 @@ export interface IDashboard extends Document {
   latestBookingTime: string;
 }
 
-export const dashboardSchema: Schema = new mongoose.Schema({
+export const dashboardSchema: Schema = new mongoose.Schema<IDashboard>({
   providerId: {
     type: String,
     ref: "Account",
@@ -27,3 +27,7 @@ export const dashboardSchema: Schema = new mongoose.Schema({
     type: String,
   },
 });
+
+const Dashboard = mongoose.model<IDashboard>("Dashboard", dashboardSchema);
+
+export default Dashboard;

@@ -8,10 +8,11 @@ export interface ICustomer extends IAccount {
   following: number;
   followingList: string[];
   watchList: string[];
+  streak: number;
   dateOfBirth: Date;
 }
 
-export const customerSchema: Schema = new mongoose.Schema({
+export const customerSchema: Schema = new mongoose.Schema<ICustomer>({
   firstName: {
     type: String,
     required: true,
@@ -25,19 +26,23 @@ export const customerSchema: Schema = new mongoose.Schema({
     default: 0,
   },
   watchList: {
-    type: Array,
+    type: [String],
     default: [],
   },
   followingList: {
-    type: Array,
+    type: [String],
     default: [],
+  },
+  streak: {
+    type: Number,
+    default: 0,
   },
   dateOfBirth: {
     type: Date,
   },
 });
 
-export const Customer = Account.discriminator<IAccount>(
+export const Customer = Account.discriminator<ICustomer>(
   "Customer",
   customerSchema
 );

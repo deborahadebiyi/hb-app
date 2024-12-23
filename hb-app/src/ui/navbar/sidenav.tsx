@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NavLinks from "@/ui/navbar/nav-links";
+import NavLinks from "@/ui/navbar/dashboard-links";
 import HomeLogo from "@/ui/logo/home-logo";
 // import { PowerIcon } from "@heroicons/react/24/outline";
 

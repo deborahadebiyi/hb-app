@@ -3,20 +3,15 @@ import { Document, Schema } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
 export interface IComment extends Document {
-  commentId: string;
-  accountId: string;
+  providerName: string;
   textField: string;
   timestamp: Date;
 }
 
-export const commentSchema: Schema = new mongoose.Schema({
-  commentId: {
+export const commentSchema: Schema = new mongoose.Schema<IComment>({
+  providerName: {
     type: String,
-    default: uuidv4(),
-  },
-  accountId: {
-    type: String,
-    ref: "Account",
+    ref: "ServiceProvider",
     required: true,
   },
   textField: {

@@ -1,14 +1,15 @@
-import mongoose from "mongoose";
+import mongoose, { Model } from "mongoose";
 import { Document, Schema } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
-const options = { discriminatorKey: "kind" };
+const options = { discriminatorKey: "role" };
 
 export interface IAccount extends Document {
   accountId: string;
   username: string;
   password: string;
   email: string;
-  telephoneNumber?: string;
+  telephoneNumber: string;
+  businessTelephoneNumber?: string;
   isVerified: boolean;
   country: string;
   rating: number;
@@ -16,7 +17,7 @@ export interface IAccount extends Document {
   role: string;
   accountCreatedAt: Date;
 }
-const accountSchema: Schema = new mongoose.Schema(
+const accountSchema: Schema = new mongoose.Schema<IAccount>(
   {
     accountId: {
       type: String,
@@ -43,7 +44,11 @@ const accountSchema: Schema = new mongoose.Schema(
     },
     telephoneNumber: {
       type: String,
-      required: [true, "contact number is required"],
+      required: [true, "Contact number is required"],
+      unique: true,
+    },
+    businessTelephoneNumber: {
+      type: String,
       unique: true,
     },
     isVerified: {

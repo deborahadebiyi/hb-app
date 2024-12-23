@@ -16,12 +16,12 @@ export interface IOpeningTimes extends Document {
   sunday?: IOpeningTime;
 }
 
-export const openingTimeSchema: Schema = new mongoose.Schema({
+export const openingTimeSchema: Schema = new mongoose.Schema<IOpeningTime>({
   open: { type: String, required: true },
   close: { type: String, required: true },
 });
 
-export const openingTimesSchema: Schema = new mongoose.Schema({
+export const openingTimesSchema: Schema = new mongoose.Schema<IOpeningTimes>({
   monday: {
     type: openingTimeSchema,
   },

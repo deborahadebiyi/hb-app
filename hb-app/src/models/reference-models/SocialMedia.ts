@@ -11,7 +11,7 @@ export interface ISocialMedia extends Document {
   businessEmail?: string;
 }
 
-export const socialMediaSchema: Schema = new mongoose.Schema({
+export const socialMediaSchema: Schema = new mongoose.Schema<ISocialMedia>({
   instagram: {
     type: String,
   },

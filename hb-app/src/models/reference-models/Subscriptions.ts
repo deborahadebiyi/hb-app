@@ -7,7 +7,11 @@ export interface IPremium extends Document {
   providerId: string;
   isPremium: boolean;
   premiumStartDate: Date;
+  premiumRenewalDate: Date;
   premiumEndDate: Date;
+  premiumfreeTrialStartDate: Date;
+  premiumfreeTrialEndDate: Date;
+  premiumfreeTrialClaimed: boolean;
 }
 
 export interface IUnlimited extends Document {
@@ -15,10 +19,14 @@ export interface IUnlimited extends Document {
   spId: string;
   isUnlimited: boolean;
   unlimitedStartDate: Date;
+  unlimitedRenewalDate: Date;
   unlimitedEndDate: Date;
+  unlimitedfreeTrialStartDate: Date;
+  unlimitedfreeTrialEndDate: Date;
+  unlimitedfreeTrialClaimed: boolean;
 }
 
-export const premiumSubscriptionSchema: Schema = new mongoose.Schema({
+export const premiumSubscriptionSchema: Schema = new mongoose.Schema<IPremium>({
   subscriptionId: {
     type: String,
     required: true,
@@ -35,32 +43,57 @@ export const premiumSubscriptionSchema: Schema = new mongoose.Schema({
   premiumStartDate: {
     type: Date,
   },
+  premiumRenewalDate: {
+    type: Date,
+  },
   premiumEndDate: {
     type: Date,
   },
-});
-
-export const unlimitedSubscriptionSchema: Schema = new mongoose.Schema({
-  subscriptionId: {
-    type: String,
-    required: true,
-    unique: true,
-    default: uuidv4(),
+  premiumfreeTrialStartDate: {
+    type: Date,
   },
-  spId: {
-    type: String,
-    ref: "ServiceProvider",
+  premiumfreeTrialEndDate: {
+    type: Date,
   },
-  isUnlimited: {
+  premiumfreeTrialClaimed: {
     type: Boolean,
   },
-  unlimitedStartDate: {
-    type: Date,
-  },
-  unlimitedEndDate: {
-    type: Date,
-  },
 });
+
+export const unlimitedSubscriptionSchema: Schema =
+  new mongoose.Schema<IUnlimited>({
+    subscriptionId: {
+      type: String,
+      required: true,
+      unique: true,
+      default: uuidv4(),
+    },
+    spId: {
+      type: String,
+      ref: "ServiceProvider",
+    },
+    isUnlimited: {
+      type: Boolean,
+    },
+    unlimitedStartDate: {
+      type: Date,
+    },
+    unlimitedRenewalDate: {
+      type: Date,
+    },
+    unlimitedEndDate: {
+      type: Date,
+    },
+    unlimitedfreeTrialStartDate: {
+      type: Date,
+    },
+    unlimitedfreeTrialEndDate: {
+      type: Date,
+    },
+    unlimitedfreeTrialClaimed: {
+      type: Boolean,
+    },
+  });
 
 const PremiumSubscription = mongoose.model<IPremium>(
   "PremiumSubscription",

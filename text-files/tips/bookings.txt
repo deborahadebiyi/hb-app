@@ -1,0 +1,78 @@
+If you want to query a property specific to the Customer model using the accountId, here’s how you can approach it:
+
+Scenario Overview
+Base Model (User): Holds common fields like accountId, username, email, etc.
+Customer Model: Extends the User model with additional fields like purchaseHistory or preferences.
+Vendor Model: Extends the User model with fields like products or businessName.
+Since both Customer and Vendor are stored in the User collection (with a role field differentiating them), you need to:
+
+Query the User collection.
+Filter by role to ensure you're targeting a Customer.
+Retrieve the property you need.
+Example Query
+Querying for a Specific Customer Property by accountId
+Assume the Customer model has a field loyaltyPoints. To query this field for a specific Customer:
+
+typescript
+Copy code
+import UserModel from "./models/user"; // Base User model
+
+async function getCustomerPropertyByAccountId(accountId: string) {
+  const customer = await UserModel.findOne({
+    accountId, // Match the accountId
+    role: "customer", // Ensure we're querying a Customer
+  }).select("loyaltyPoints accountId username");
+
+  if (!customer) {
+    throw new Error(`Customer with accountId ${accountId} not found`);
+  }
+
+  console.log(`Loyalty Points for ${customer.username}:`, customer.loyaltyPoints);
+  return customer.loyaltyPoints;
+}
+
+// Example usage
+getCustomerPropertyByAccountId("cust12345").catch(console.error);
+Query Explanation
+Filter:
+{ accountId, role: "customer" }: Ensures you're querying for a Customer and not a Vendor.
+select():
+Fetches only specific fields (loyaltyPoints, accountId, and username) to optimize the query.
+Error Handling:
+Throws an error if no matching document is found.
+Alternative: Populate and Join Queries
+If Customer properties reference other collections (e.g., orders in a separate collection):
+
+typescript
+Copy code
+async function getCustomerOrdersByAccountId(accountId: string) {
+  const customer = await UserModel.findOne({
+    accountId,
+    role: "customer",
+  })
+    .populate({
+      path: "orders", // Assuming `orders` is a field in the Customer schema
+      select: "orderNumber totalAmount",
+    })
+    .exec();
+
+  if (!customer) {
+    throw new Error(`Customer with accountId ${accountId} not found`);
+  }
+
+  console.log(`Orders for ${customer.username}:`, customer.orders);
+  return customer.orders;
+}
+Optimizing Query Design
+Indexes: Add indexes to accountId and role for faster lookups:
+
+typescript
+Copy code
+UserSchema.index({ accountId: 1, role: 1 });
+Discriminator Key: If using Mongoose discriminators for Vendor and Customer, the role field is automatically managed, and queries can directly reference the discriminator model:
+
+typescript
+Copy code
+const CustomerModel = UserModel.discriminator("Customer", CustomerSchema);
+
+const customer = await CustomerModel.findOne({ accountId }).select("loyaltyPoints");

@@ -1,0 +1,13 @@
+Need the ability to notify SPs and customers 
+will need to urge both to not disable push notifications for appointments
+
+Customers 
+- running late
+- i'm here
+
+Service provider
+- running late 
+
+Also for SP's 
+contact preferences for on the day
+- can be set in dashboard 

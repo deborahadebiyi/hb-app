@@ -15,7 +15,7 @@ export interface IBusiness extends IProviderProfile {
   openingTimes?: IOpeningTimes;
 }
 
-export const businessSchema: Schema = new mongoose.Schema({
+export const businessSchema: Schema = new mongoose.Schema<IBusiness>({
   website: {
     type: String,
   },

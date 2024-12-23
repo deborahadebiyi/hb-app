@@ -10,11 +10,12 @@ export interface IPolicy extends Document {
   lateDropOff: number;
   prepRules: string;
   dropOffTime: string;
-  defaultPolicies: string[];
-  misc: { heading: string; textField: string }[];
+  defaultPolicies: string[]; //rethink this
+  policyImage?: string; //store in s3 bucket
+  misc: { title: string; text: string }[];
 }
 
-export const policySchema: Schema = new mongoose.Schema({
+export const policySchema: Schema = new mongoose.Schema<IPolicy>({
   providerId: {
     type: String,
     ref: "Account",
@@ -36,7 +37,7 @@ export const policySchema: Schema = new mongoose.Schema({
     type: Number,
   },
   defaultPolicies: {
-    type: Array,
+    type: [String],
   },
   prepRules: {
     type: String,
@@ -44,8 +45,11 @@ export const policySchema: Schema = new mongoose.Schema({
   dropOffTime: {
     type: String,
   },
+  policyImage: {
+    type: String,
+  },
   misc: {
-    type: Array,
+    type: [Object],
   },
 });
 

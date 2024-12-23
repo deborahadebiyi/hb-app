@@ -7,14 +7,14 @@ import {
   premiumSubscriptionSchema,
   unlimitedSubscriptionSchema,
 } from "./Subscriptions";
-import { socialMediaSchema } from "./SocialMedia";
+import { ISocialMedia, socialMediaSchema } from "./SocialMedia";
 import { IService, serviceSchema } from "./Service";
 
 export interface IProviderProfile extends IAccount {
   providerName: string;
   profileImage?: string;
   followers: number;
-  socialMedia?: object;
+  socialMedia?: ISocialMedia;
   location: string;
   serviceCategory: string[];
   services: IService[];
@@ -22,48 +22,49 @@ export interface IProviderProfile extends IAccount {
   unlimited: IUnlimited;
 }
 
-export const providerProfileSchema: Schema = new mongoose.Schema({
-  providerName: {
-    type: String,
-    required: true,
-  },
-  profileImage: {
-    type: String,
-  },
-  followers: {
-    type: Number,
-    default: 0,
-  },
-  socialMedia: socialMediaSchema,
-  location: {
-    type: String,
-    required: true,
-  },
-  serviceCategory: {
-    type: Array,
-    enum: [
-      "hair stylist",
-      "loctician",
-      "barber",
-      "makeup artist",
-      "nail technician",
-      "face + body art",
-      "aesthetic treatments",
-      "spa treatments",
-      "hair removal",
-      "tanning",
-      "smile transformation",
-      "massage",
-      "lashes",
-      "brows",
-      "baking",
-    ],
-    required: true,
-  },
-  services: serviceSchema,
-  premium: premiumSubscriptionSchema,
-  unlimited: unlimitedSubscriptionSchema,
-});
+export const providerProfileSchema: Schema =
+  new mongoose.Schema<IProviderProfile>({
+    providerName: {
+      type: String,
+      required: true,
+    },
+    profileImage: {
+      type: String,
+    },
+    followers: {
+      type: Number,
+      default: 0,
+    },
+    socialMedia: socialMediaSchema,
+    location: {
+      type: String,
+      required: true,
+    },
+    serviceCategory: {
+      type: [String],
+      enum: [
+        "hair stylist",
+        "loctician",
+        "barber",
+        "makeup artist",
+        "nail technician",
+        "face + body art",
+        "aesthetic treatments",
+        "spa treatments",
+        "hair removal",
+        "tanning",
+        "smile transformation",
+        "massage",
+        "lashes",
+        "brows",
+        "baking",
+      ],
+      required: true,
+    },
+    services: [serviceSchema],
+    premium: premiumSubscriptionSchema,
+    unlimited: unlimitedSubscriptionSchema,
+  });
 
 const ProviderProfile = mongoose.model<IProviderProfile>(
   "ProviderProfile",

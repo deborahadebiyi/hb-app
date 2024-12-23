@@ -9,7 +9,7 @@ export interface IAddress extends Document {
   postZipcode: string;
 }
 
-export const addressSchema: Schema = new mongoose.Schema({
+export const addressSchema: Schema = new mongoose.Schema<IAddress>({
   line1: {
     type: String,
   },

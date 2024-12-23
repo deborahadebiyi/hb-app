@@ -4,34 +4,45 @@ import { Schema } from "mongoose";
 import ProviderProfile, {
   IProviderProfile,
 } from "../reference-models/ProviderProfile";
+import { IService, serviceSchema } from "../reference-models/Service";
 
 export interface IServiceProvider extends IProviderProfile {
   extraOfferings?: string[];
   catersTo?: string[];
+  headerImage?: string;
+  serviceList: IService[];
 }
 
-export const serviceproviderSchema: Schema = new mongoose.Schema({
-  extraOfferings: {
-    type: Array,
-    enum: [
-      "neurodiverse-friendly",
-      "child-friendly",
-      "pet-friendly",
-      "accessible",
-    ],
-  },
-  catersTo: {
-    type: Array,
-    enum: [
-      "afro/natural hair",
-      "type 1 hair",
-      "type 2 hair",
-      "type 3 hair",
-      "type 4 hair",
-      "grey hair",
-    ],
-  },
-});
+export const serviceproviderSchema: Schema =
+  new mongoose.Schema<IServiceProvider>({
+    extraOfferings: {
+      type: Array,
+      enum: [
+        "neurodiverse-friendly",
+        "child-friendly",
+        "pet-friendly",
+        "accessible",
+      ],
+    },
+    catersTo: {
+      type: Array,
+      enum: [
+        "afro/natural hair",
+        "type 1 hair",
+        "type 2 hair",
+        "type 3 hair",
+        "type 4 hair",
+        "grey hair",
+      ],
+    },
+    headerImage: {
+      type: String,
+    },
+    serviceList: {
+      type: [serviceSchema],
+      default: [],
+    },
+  });
 
 export const ServiceProvider = ProviderProfile.discriminator<IServiceProvider>(
   "ServiceProvider",

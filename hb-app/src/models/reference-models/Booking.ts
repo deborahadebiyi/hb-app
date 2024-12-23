@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
-import { v4 as uuidv4 } from "uuid";
 
 export interface IBooking extends Document {
-  bookingId: string;
   providerId: string;
   customerId: string;
   customerName: string;
@@ -14,15 +12,10 @@ export interface IBooking extends Document {
   outstandingAmount: number;
   isCustomerReviewed: boolean;
   isServiceProviderReviewed: boolean;
+  createdAt: Date;
 }
 
-export const bookingSchema: Schema = new mongoose.Schema({
-  bookingId: {
-    type: String,
-    required: true,
-    index: true,
-    default: uuidv4(),
-  },
+export const bookingSchema: Schema = new mongoose.Schema<IBooking>({
   providerId: {
     type: String,
     ref: "Account",
@@ -47,7 +40,7 @@ export const bookingSchema: Schema = new mongoose.Schema({
     default: Date.now,
   },
   servicesBooked: {
-    type: Array,
+    type: [String],
     default: [],
   },
   bookingAmount: {
@@ -63,3 +56,7 @@ export const bookingSchema: Schema = new mongoose.Schema({
     type: Boolean,
   },
 });
+
+const Booking = mongoose.model<IBooking>("Booking", bookingSchema);
+
+export default Booking;

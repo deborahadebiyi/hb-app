@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
-import { v4 as uuidv4 } from "uuid";
 import { commentSchema, IComment } from "./reference-models/Comment";
 
 export interface IReview extends Document {
@@ -17,59 +16,48 @@ export interface IReview extends Document {
   timestamp: Date;
 }
 
-
-
-// const reviewSchema: Schema = new mongoose.Schema({
-//   reviewId: {
-//     type: String,
-//     required: true,
-//     unique: true,
-//     default: uuidv4(),
-//   },
+const reviewSchema: Schema = new mongoose.Schema<IReview>({
   authorId: {
     type: String,
-    ref: "User",
-    required: true,
+    ref: "Account",
   },
-    targetId: {
+  authorRole: {
     type: String,
-    ref: "User",
-    required: true,
+    enum: ["service-provider", "customer"],
   },
-//   customerId: {
-//     type: String,
-//     ref: "Account",
-//     required: true,
-//   },
-//   username: {
-//     type: String,
-//     ref: "Account",
-//     required: true,
-//   },
-//   ratingTags: {
-//     type: Array,
-//   },
-//   rating: {
-//     type: Number,
-//   },
-//   textField: {
-//     type: String,
-//     maxlength: 350,
-//   },
-//   comment: {
-//     type: commentSchema,
-//   },
-//   likes: {
-//     type: Number,
-//     default: 0,
-//   },
-//   timestamp: {
-//     type: Date,
-//     default: Date.now,
-//   },
-// });
+  authorUsername: {
+    type: String,
+  },
+  targetId: {
+    type: String,
+    ref: "Account",
+  },
+  targetRole: {
+    type: String,
+    enum: ["service-provider", "customer"],
+  },
+  reviewTags: {
+    type: [String],
+    enum: ["punctual", "good communication", "excellent service"],
+  },
+  rating: {
+    type: Number,
+  },
+  textField: {
+    type: String,
+    maxlength: 350,
+  },
+  comment: commentSchema,
+  likes: {
+    type: Number,
+    default: 0,
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-// const Review = mongoose.model<IReview>("Review", reviewSchema);
+const Review = mongoose.model<IReview>("Review", reviewSchema);
 
-// export default Review;
-
+export default Review;

@@ -7,7 +7,9 @@ const dbConnect = async () => {
     return;
   }
   try {
-    const db = await mongoose.connect(process.env.MONGO_URI!);
+    const db = await mongoose.connect(process.env.MONGO_URI!, {
+      autoIndex: false,
+    });
 
     connection.isConnected = db.connections[0].readyState;
     console.log("Connected to db");
