@@ -8,6 +8,7 @@ const Nav = () => {
         <Link href="/customer-profile"> My Profile </Link>
         <Link href="/dashboard">Dashboard</Link>
         <Link href="/login">Login</Link>
+        <Link href="/subscribe">Get Started</Link>
       </div>
     </nav>
   );

@@ -2,7 +2,7 @@ import {
   RegisterSPLink,
   RegisterBusinessLink,
   RegisterCustomerLink,
-} from "@/ui/register-links/register-links";
+} from "@/components/register-links/register-links";
 
 export default function Register() {
   return (

@@ -28,7 +28,7 @@ const links = [
   { name: "Broadcast", href: "/dashboard/broadcast", icon: SpeakerWaveIcon },
 ];
 
-export default function NavLinks() {
+export default function DashboardLinks() {
   return (
     // add conditional logic, if role === customer then sidenav should include different links
     // let links
