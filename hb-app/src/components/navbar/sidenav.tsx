@@ -1,6 +1,6 @@
 import Link from "next/link";
-import NavLinks from "@/ui/navbar/dashboard-links";
-import HomeLogo from "@/ui/logo/home-logo";
+import NavLinks from "@/components/navbar/dashboard-links";
+import HomeLogo from "@/components/logo/home-logo";
 // import { PowerIcon } from "@heroicons/react/24/outline";
 
 export default function SideNav() {
@@ -10,7 +10,7 @@ export default function SideNav() {
         className="mb-2 flex h-20 items-end justify-start rounded-md bg-background p-4 md:h-40"
         href="/"
       >
-        <div className="w-32 text-white md:w-40">
+        <div className="w-32 text-lightWhite md:w-40">
           <HomeLogo />
         </div>
       </Link>

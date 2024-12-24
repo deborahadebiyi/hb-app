@@ -41,7 +41,7 @@ export default function NavLinks() {
           <a
             key={link.name}
             href={link.href}
-            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-navigationBtn p-3 text-sm font-medium hover:bg-reviewHover hover:text-textHover md:flex-none md:justify-start md:p-2 md:px-3"
+            className="flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-darkpapyrus p-3 text-sm hover:bg-lightGold hover:text-white text-white md:flex-none md:justify-start md:p-2 md:px-3 font-medium"
           >
             <LinkIcon className="w-6" />
             <p className="hidden md:block">{link.name}</p>
