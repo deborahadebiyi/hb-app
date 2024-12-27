@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "./card";
 import { CheckIcon, TrophyIcon } from "@heroicons/react/24/outline";
+import { gradientBtn } from "../button-variants/gradient-button";
 
 export interface SubscriptionProps {
   subscriptionType: string;
@@ -16,8 +17,8 @@ export interface SubscriptionProps {
   description: string;
   offerings: string[];
   billingCycle: string;
-  // freeTrial?: string;
-  // trialHref?: string;
+  freeTrial?: string;
+  trialHref?: string;
   href: string;
   paymentLink?: string;
   buttonDesc: string;
@@ -52,11 +53,12 @@ const subscriptionList: SubscriptionProps[] = [
       "Work/life balance",
       "Customisable service page",
       "Monthly overview",
+      "Migrate existing booking pages for free",
     ],
     billingCycle: "month",
-    // freeTrial: "Try HB free for a month",
-    // trialHref: "/register/service-provider/free-trial",
-    href: "/register",
+    freeTrial: "Try HB free for a month",
+    trialHref: "/register/service-provider/free-trial",
+    href: "/register/service-provider/premium",
     paymentLink: "pay.me/stripe/premium",
     buttonDesc: "Get Now",
   },
@@ -73,7 +75,7 @@ const subscriptionList: SubscriptionProps[] = [
       "Weekly stats",
     ],
     billingCycle: "month",
-    href: "/register",
+    href: "/register/service-provider/unlimited",
     paymentLink: "pay.me/stripe/unlimited",
     buttonDesc: "Get Now",
   },
@@ -81,7 +83,7 @@ const subscriptionList: SubscriptionProps[] = [
 
 export const SubscriptionDisplay = () => {
   return (
-    <section id="pricing" className="container py-24 sm:py-32 ">
+    <section id="pricing" className="container mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Get
         <span className="bg-gradient-to-b from-lightAqua to-darkpapyrus uppercase text-transparent bg-clip-text">
@@ -94,7 +96,7 @@ export const SubscriptionDisplay = () => {
         Choose a subscription based on your current needs knowing you&apos;ll be
         able to upgrade as you grow
       </h3>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
         {subscriptionList.map((subscription: SubscriptionProps) => (
           <Card
             key={subscription.subscriptionType}
@@ -124,22 +126,16 @@ export const SubscriptionDisplay = () => {
               <CardDescription className="text-black">
                 {subscription.description}
               </CardDescription>
-              {/* <a
+              <a
                 className="underline text-lightWhite"
                 href={subscription.trialHref}
               >
                 {subscription.freeTrial}
-              </a> */}
+              </a>
             </CardHeader>
 
             <CardContent>
-              <button
-                className="text-white
-                bg-gradient-to-r from-lightAqua via-papyrus to-darkpapyrus
-                hover:bg-gradient-to-br focus:ring-4 focus:outline-none
-                focus:ring-lightGold dark:focus:ring-offset-lightAqua font-medium
-                rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-              >
+              <button className={gradientBtn}>
                 {" "}
                 <Link href={subscription.href}>{subscription.buttonDesc}</Link>
               </button>

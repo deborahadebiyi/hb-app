@@ -4,8 +4,16 @@ export function RegisterSPLink() {
   return (
     <div data-testid="register-sp-link">
       <Link href="/register/service-provider">
-        Register as an Service Provider
+        Register as a Service Provider
       </Link>
+    </div>
+  );
+}
+
+export function RegisterPreviousLink() {
+  return (
+    <div data-testid="register-sp-link">
+      <Link href="/register/migrate-previous">Migrate me</Link>
     </div>
   );
 }

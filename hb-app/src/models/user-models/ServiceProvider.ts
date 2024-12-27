@@ -7,6 +7,9 @@ import ProviderProfile, {
 import { IService, serviceSchema } from "../reference-models/Service";
 
 export interface IServiceProvider extends IProviderProfile {
+  isSubscribed: boolean;
+  subscriptionType: string;
+  isPaused: boolean; // in the case of payment failurexs
   extraOfferings?: string[];
   catersTo?: string[];
   headerImage?: string;
@@ -15,6 +18,23 @@ export interface IServiceProvider extends IProviderProfile {
 
 export const serviceproviderSchema: Schema =
   new mongoose.Schema<IServiceProvider>({
+    isSubscribed: {
+      type: Boolean,
+      default: false,
+    },
+    subscriptionType: {
+      type: String,
+      enum: [
+        "premium",
+        "premium-free-trial",
+        "unlimited",
+        "unlimited-free-trial",
+      ],
+    },
+    isPaused: {
+      type: Boolean,
+      default: false,
+    },
     extraOfferings: {
       type: Array,
       enum: [

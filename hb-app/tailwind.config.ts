@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
         navigationBtn: "#d6d0b4",
         review: "#12322f",
-        defaultText: "#f1f3f5",
+        defaultText: "#212224", //"#f1f3f5"
         reviewHover: "#827c5e",
         textHover: "#e8e6e3",
         lightAqua: "#bfdeca",

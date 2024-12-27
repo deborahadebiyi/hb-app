@@ -16,7 +16,7 @@ export interface IPremium extends Document {
 
 export interface IUnlimited extends Document {
   subscriptionId: string;
-  spId: string;
+  providerId: string;
   isUnlimited: boolean;
   unlimitedStartDate: Date;
   unlimitedRenewalDate: Date;
@@ -57,6 +57,7 @@ export const premiumSubscriptionSchema: Schema = new mongoose.Schema<IPremium>({
   },
   premiumfreeTrialClaimed: {
     type: Boolean,
+    default: false,
   },
 });
 
@@ -68,7 +69,7 @@ export const unlimitedSubscriptionSchema: Schema =
       unique: true,
       default: uuidv4(),
     },
-    spId: {
+    providerId: {
       type: String,
       ref: "ServiceProvider",
     },
@@ -92,6 +93,7 @@ export const unlimitedSubscriptionSchema: Schema =
     },
     unlimitedfreeTrialClaimed: {
       type: Boolean,
+      default: false,
     },
   });
 
