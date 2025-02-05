@@ -1,3 +1,3 @@
-export default function SProfile() {
-  return <p> SP Profile</p>;
+export default function SPBookingPage() {
+  return <p> SP Booking Page</p>;
 }

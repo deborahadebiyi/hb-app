@@ -7,6 +7,7 @@ export default function Homepage() {
       <h1 className="text-darkpapyrus font-extrabold text-[44px] text-center">
         Welcome to HB app
       </h1>
+      <h3>No commission fees!!</h3>
       <div className="place-items-center">
         <button className={gradientBtn}>
           <Link href="/register/service-provider">

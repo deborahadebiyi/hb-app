@@ -6,6 +6,7 @@ import {
   SparklesIcon,
   ChartBarIcon,
   SpeakerWaveIcon,
+  CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 
 // Map of links to display in the side navigation.
@@ -26,6 +27,7 @@ const links = [
   },
   { name: "My Policies", href: "/dashboard/policies", icon: ClipboardIcon },
   { name: "Broadcast", href: "/dashboard/broadcast", icon: SpeakerWaveIcon },
+  { name: "My Tasks", href: "/dashboard/tasks", icon: CheckCircleIcon },
 ];
 
 export default function DashboardLinks() {

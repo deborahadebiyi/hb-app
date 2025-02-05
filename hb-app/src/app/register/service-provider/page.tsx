@@ -1,9 +1,6 @@
+import { SubscriptionDisplay } from "@/components/subscriptions/Pricing";
 export default async function RegisterServiceProvider() {
-  return (
-    <div>
-      <h1>Register here, service provider!</h1>
-    </div>
-  );
+  return <SubscriptionDisplay />;
   /**
    * Need to take all details
    * username + password with validation

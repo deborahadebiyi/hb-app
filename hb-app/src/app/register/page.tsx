@@ -20,7 +20,7 @@ const registerHomeLinksList: RegisterHomeLinks[] = [
   {
     userType: "Service Providers",
     description:
-      "Looking to manage your bookings and grow your business? Peruse our offerings.",
+      "Looking to manage your bookings and grow your business? Read more.",
     href: "/register/service-provider",
     buttonDesc: "Register",
   },

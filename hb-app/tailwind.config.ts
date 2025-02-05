@@ -11,6 +11,9 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        trial: "#604D53",
+        trialText: "#DDBDD5",
+        trialTextTwo: "#A8D5E2",
         navigationBtn: "#d6d0b4",
         review: "#12322f",
         defaultText: "#212224", //"#f1f3f5"
