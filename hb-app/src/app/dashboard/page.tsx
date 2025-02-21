@@ -7,6 +7,7 @@ export default function Dashboard() {
         {/* add skeleton for each different page e.g a bookings table skeleton but attach those to links */}
       </h1>
       <h3>Manage your bookings and work/life balance in your dashboard</h3>
+      {/* <h4> Your profile is {}% complete</h4>  */}
     </div>
   );
 }

@@ -1,4 +1,11 @@
 import { useUser } from "@clerk/nextjs";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import Link from "next/link";
 import NavSearchbar from "../search-bar/NavSearchbar";
 import {
@@ -41,6 +48,29 @@ export const DefaultNavBar = () => {
         <NavHomeIcon className="w-6" />
       </Link>
       <Link href="/sign-in">Login</Link>
+    </div>
+  </nav>;
+};
+
+export const SPNavBar = () => {
+  <nav className="flex justify-between items-center bg-lightAqua p-4 !text-white">
+    <div className="flex items-left space-x-6">
+      <NavSearchbar />
+    </div>
+    <div className="flex items-center font-extrabold">
+      <Link href="/">MEINTEIN</Link>
+    </div>
+    <div className="flex items-right space-x-4">
+      <Link href="/subscribe">
+        <NavGetStartedIcon className="w-6" />
+      </Link>
+      <Link href="/">
+        <NavHomeIcon className="w-6" />
+      </Link>
+      <SignInButton />
+      <Link href="">
+        <NavSettings className="w-6" />
+      </Link>
     </div>
   </nav>;
 };

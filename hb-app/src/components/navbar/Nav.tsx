@@ -5,6 +5,14 @@ import {
   ListBulletIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 import Link from "next/link";
 import NavSearchbar from "../search-bar/NavSearchbar";
 
@@ -25,6 +33,7 @@ const Nav = () => {
       </div>
       <div className="flex items-right space-x-4">
         <Link href="/register">Register</Link>
+        <SignUpButton />
         <Link href="/dashboard">
           <NavDashboardIcon className="w-6" />
         </Link>
