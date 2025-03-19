@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "./card";
 import { CheckIcon, TrophyIcon } from "@heroicons/react/24/outline";
-import { gradientBtn } from "../button-variants/gradient-button";
+import { standardBtn } from "../button-variants/button";
 
 export interface SubscriptionProps {
   subscriptionType: string;
@@ -39,7 +39,7 @@ const subscriptionList: SubscriptionProps[] = [
   //     "Monthly overview",
   //   ],
   //   billingCycle: "month",
-  //   href: "/register/service-provider/free-trial",
+  //   href: "/sign-up/service-provider/free-trial",
   //   buttonDesc: "Try free now",
   // },
   {
@@ -57,8 +57,8 @@ const subscriptionList: SubscriptionProps[] = [
     ],
     billingCycle: "month",
     freeTrial: "Try HB free for a month",
-    trialHref: "/register/service-provider/free-trial",
-    href: "/register/service-provider/premium",
+    trialHref: "/sign-up/service-provider/free-trial",
+    href: "/sign-up/service-provider/premium",
     paymentLink: "pay.me/stripe/premium",
     buttonDesc: "Get Now",
   },
@@ -75,7 +75,7 @@ const subscriptionList: SubscriptionProps[] = [
       "Weekly stats",
     ],
     billingCycle: "month",
-    href: "/register/service-provider/unlimited",
+    href: "/sign-up/service-provider/unlimited",
     paymentLink: "pay.me/stripe/unlimited",
     buttonDesc: "Get Now",
   },
@@ -86,7 +86,7 @@ export const SubscriptionDisplay = () => {
     <section id="pricing" className="container mx-auto">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Get
-        <span className="bg-gradient-to-b from-lightAqua to-darkpapyrus uppercase text-transparent bg-clip-text">
+        <span className="bg-goldy uppercase text-transparent bg-clip-text">
           {" "}
           Unlimited{" "}
         </span>
@@ -107,7 +107,7 @@ export const SubscriptionDisplay = () => {
             }
           >
             <CardHeader>
-              <CardTitle className="flex item-center justify-between text-darkpapyrus">
+              <CardTitle className="flex item-center justify-between text-goldy">
                 {subscription.subscriptionType}
                 {subscription.popular === true ? (
                   <TrophyIcon className="size-7" />
@@ -126,16 +126,13 @@ export const SubscriptionDisplay = () => {
               <CardDescription className="text-black">
                 {subscription.description}
               </CardDescription>
-              <a
-                className="underline text-lightWhite"
-                href={subscription.trialHref}
-              >
+              <a className="underline text-goldy" href={subscription.trialHref}>
                 {subscription.freeTrial}
               </a>
             </CardHeader>
 
             <CardContent>
-              <button className={gradientBtn}>
+              <button className={standardBtn}>
                 {" "}
                 <Link href={subscription.href}>{subscription.buttonDesc}</Link>
               </button>
@@ -151,7 +148,7 @@ export const SubscriptionDisplay = () => {
               <div className="space-y-4">
                 {subscription.offerings.map((offering: string) => (
                   <span key={offering} className="flex">
-                    <CheckIcon className="text-lightAqua size-4" />{" "}
+                    <CheckIcon className="text-goldy size-4" />{" "}
                     <ol className="ml-2 text-black">{offering}</ol>
                   </span>
                 ))}

@@ -1,55 +1,21 @@
-import {
-  ChartPieIcon,
-  ClipboardDocumentCheckIcon,
-  HomeIcon,
-  ListBulletIcon,
-  UserCircleIcon,
-} from "@heroicons/react/24/outline";
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import Link from "next/link";
-import NavSearchbar from "../search-bar/NavSearchbar";
+import { auth, currentUser } from "@clerk/nextjs/server";
+import { DefaultNavbar, SPNavbar, CustomerNavbar } from "./Navbar";
 
-const NavHomeIcon = HomeIcon;
-const NavLoginIcon = UserCircleIcon;
-const NavGetStartedIcon = ListBulletIcon;
-const NavDashboardIcon = ChartPieIcon;
-const Nav = () => {
-  return (
-    <nav className="flex justify-between items-center bg-lightAqua p-4 !text-white">
-      <div className="flex items-left space-x-6">
-        <NavSearchbar />
-        {/* <Link href="/customer-profile"> My Profile </Link> // this will need to
-        be conditionally rendered based on role */}
-      </div>
-      <div className="flex items-center font-extrabold">
-        <Link href="/">MEINTEIN</Link>
-      </div>
-      <div className="flex items-right space-x-4">
-        <Link href="/register">Register</Link>
-        <SignUpButton />
-        <Link href="/dashboard">
-          <NavDashboardIcon className="w-6" />
-        </Link>
-        {/* Dashboard will need to be conditionally rendered based on role */}
-        <Link href="/subscribe">
-          <NavGetStartedIcon className="w-6" />
-        </Link>
-        <Link href="/">
-          <NavHomeIcon className="w-6" />
-        </Link>
-        <Link href="/sign-in">
-          <NavLoginIcon className="w-6" />
-        </Link>
-      </div>
-    </nav>
-  );
-};
+export default async function Nav() {
+  const { userId } = await auth();
+  const user = await currentUser();
+  const firstName = user?.firstName;
+  const role = user?.publicMetadata?.userRole;
+  const subscription = user?.publicMetadata?.subscription;
 
-export default Nav;
+  if (!userId) {
+    return <DefaultNavbar />;
+  } else if (role === "customer") {
+    return <CustomerNavbar role={role} name={firstName} />;
+  } else if (role === "serviceprovider") {
+    return (
+      <SPNavbar role={role} subscription={subscription} name={firstName} />
+    );
+  }
+  return <DefaultNavbar />;
+}

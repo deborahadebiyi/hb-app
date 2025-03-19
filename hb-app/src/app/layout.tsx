@@ -22,8 +22,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "HB App",
-  description: "Created by the Tx Group",
+  title: "Meintein",
+  description: "Created by Meintein Ltd",
 };
 
 export default function RootLayout({
@@ -39,7 +39,7 @@ export default function RootLayout({
         >
           <div className="flex flex-col h-screen max-h-screen">
             <Nav />
-            <div className="flex-grow overflow-y-auto bg-background text-defaultText">
+            <div className="flex-grow overflow-y-auto bg-background text- goldy">
               {children}
             </div>
           </div>

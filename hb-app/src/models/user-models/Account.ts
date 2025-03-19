@@ -1,10 +1,11 @@
-import mongoose, { Model } from "mongoose";
+import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 const options = { discriminatorKey: "role" };
 
 export interface IAccount extends Document {
   accountId: string;
+  clerkId: string;
   username: string;
   password: string;
   email: string;
@@ -25,6 +26,12 @@ const accountSchema: Schema = new mongoose.Schema<IAccount>(
       unique: true, // ? might not be necessary, uuids should be unique
       index: true,
       default: uuidv4(),
+    },
+    clerkId: {
+      type: String,
+      required: true,
+      unique: true,
+      index: true,
     },
     username: {
       type: String,

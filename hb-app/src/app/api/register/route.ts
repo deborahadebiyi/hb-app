@@ -48,6 +48,6 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest, providerName: string) {
-  redirect(`/sp-profile/${providerName}`);
-}
+// export async function GET(request: NextRequest, providerName: string) {
+//   redirect(`/sp-profile/${providerName}`);
+// }

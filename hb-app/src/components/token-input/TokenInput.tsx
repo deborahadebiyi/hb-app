@@ -3,7 +3,7 @@ export default function TokenInput() {
     <form className="max-w-sm mx-auto">
       <p
         id="helper-text-prompt"
-        className="mt-2 text-sm text-gray-500 dark:text-gray-400"
+        className="mt-2 text-sm text-black dark:text-black"
       >
         Please provide the 6 digit code sent to your email to verify your
         account
@@ -102,18 +102,17 @@ export default function TokenInput() {
       <button
         type="submit"
         className="text-white
-                bg-gradient-to-r from-lightAqua via-papyrus to-darkpapyrus
-                hover:bg-gradient-to-br focus:ring-4 focus:outline-none
-                focus:ring-lightGold dark:focus:ring-offset-lightAqua font-medium
+                bg-goldy focus:ring-4 focus:outline-none
+                focus:ring-darkgoldy dark:focus:ring-offset-darkgoldy font-medium
                 rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
       >
         Submit
       </button>
       <p
         id="helper-text-explanation"
-        className="mt-2 underline text-sm text-gray-500 dark:text-gray-400"
+        className="mt-2 underline text-sm text-black dark:text-black"
       >
-        Didn't receive the code? Click to resend
+        Did not receive the code? Click to resend
       </p>
     </form>
   );
