@@ -7,13 +7,6 @@ export const MenuSignOutButton = () => {
   const { signOut } = useClerk();
 
   return (
-    // <button
-    //   onClick={() => signOut({ redirectUrl: "/" })}
-    //   className={standardBtn}
-    // >
-    //   Sign out
-    //   </button>
-
     <a
       href="/"
       onClick={() => signOut({ redirectUrl: "/" })}

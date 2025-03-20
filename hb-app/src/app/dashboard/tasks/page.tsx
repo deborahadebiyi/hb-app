@@ -1,8 +1,6 @@
 "use client";
 import { useState } from "react";
-// import { CheckIcon, TrashIcon } from "@heroicons/react/24/outline";
-import { Trash, Edit, CheckCircle, Save } from "lucide-react";
-import { standardBtn } from "@/components/button-variants/button";
+import { Trash, Edit, Save } from "lucide-react";
 
 export default function TodoApp() {
   const [todos, setTodos] = useState<{ text: string; completed: boolean }[]>(
@@ -56,16 +54,19 @@ export default function TodoApp() {
     <div className="flex flex-col items-left p-6 min-h-screen">
       <h1 className="text-2xl font-bold mb-4">My tasks</h1>
 
-      {/* Input and Add Button */}
-      <div className="flex space-x-2 w-full max-w-md">
+      {/* Input and Add Button Inline */}
+      <div className="flex w-full max-w-md space-x-2">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Add a new task..."
-          className="flex-grow px-4 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-goldy"
+          className="p-2 border w-full focus:ring-goldy"
         />
-        <button onClick={addTodo} className={standardBtn}>
+        <button
+          onClick={addTodo}
+          className="px-4 py-2 bg-black text-white rounded"
+        >
           Add
         </button>
       </div>

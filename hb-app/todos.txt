@@ -1,0 +1,5 @@
+- generate booking page link upon active subscription
+- assign role in onboarding flow
+- update sp onboarding form 
+- determine what is added to the public metadata
+- use info to populate contact card 

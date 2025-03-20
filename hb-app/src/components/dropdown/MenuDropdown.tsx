@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MenuSignOutButton } from "../sign-out/SignOutButton";
 
 export const MenuDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,7 +82,6 @@ export const MenuDropdown = () => {
           </ul>
 
           <div className="py-2">
-            <MenuSignOutButton />
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-600"
