@@ -4,7 +4,6 @@ import { Schema } from "mongoose";
 import ProviderProfile, {
   IProviderProfile,
 } from "../reference-models/ProviderProfile";
-import { IService, serviceSchema } from "../reference-models/Service";
 
 export interface IServiceProvider extends IProviderProfile {
   isSubscribed: boolean;
@@ -13,7 +12,7 @@ export interface IServiceProvider extends IProviderProfile {
   extraOfferings?: string[];
   catersTo?: string[];
   headerImage?: string;
-  serviceList: IService[];
+  bookingLink: string;
 }
 
 export const serviceproviderSchema: Schema =
@@ -58,9 +57,8 @@ export const serviceproviderSchema: Schema =
     headerImage: {
       type: String,
     },
-    serviceList: {
-      type: [serviceSchema],
-      default: [],
+    bookingLink: {
+      type: String,
     },
   });
 

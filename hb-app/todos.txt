@@ -3,3 +3,11 @@
 - update sp onboarding form 
 - determine what is added to the public metadata
 - use info to populate contact card 
+- hono + zod 
+- webhooks for adding user info to mongo 
+
+
+FOR TODAY
+- finish booking page 
+- finish onboarding 
+- hook up to mongo using webhooks

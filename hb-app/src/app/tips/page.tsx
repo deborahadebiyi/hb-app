@@ -1,7 +1,9 @@
 export default function Tips() {
   return (
-    <div>
-      <h1>Some tips to get you going</h1>
+    <div className="text-xl font-bold">
+      <ul>
+        <li> Get that money, honey!</li>
+      </ul>
     </div>
   );
 }

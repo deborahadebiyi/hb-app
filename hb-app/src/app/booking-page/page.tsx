@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
+import ProfileCard from "../../components/profile-card/ProfileCard";
+import { SparklesIcon } from "@heroicons/react/24/outline";
 
 export default function BookingPage() {
   const [services, setServices] = useState<
@@ -8,8 +10,8 @@ export default function BookingPage() {
   const [newService, setNewService] = useState({
     name: "",
     description: "",
-    duration: 0,
-    price: 0,
+    duration: "",
+    price: "",
   });
   const [editIndex, setEditIndex] = useState<number | null>(null);
   const [preview, setPreview] = useState(false);
@@ -20,7 +22,10 @@ export default function BookingPage() {
     const { name, value } = e.target;
     setNewService((prev) => ({
       ...prev,
-      [name]: name === "duration" || name === "price" ? Number(value) : value,
+      [name]:
+        name === "duration" || name === "price"
+          ? Math.max(0, Number(value))
+          : value,
     }));
   };
 
@@ -28,23 +33,42 @@ export default function BookingPage() {
     if (
       !newService.name ||
       !newService.description ||
-      newService.duration <= 0 ||
-      newService.price <= 0
+      newService.duration === "" ||
+      newService.price === ""
     )
       return;
     if (editIndex !== null) {
       setServices((prev) =>
-        prev.map((service, i) => (i === editIndex ? newService : service))
+        prev.map((service, i) =>
+          i === editIndex
+            ? {
+                ...newService,
+                duration: Number(newService.duration),
+                price: Number(newService.price),
+              }
+            : service
+        )
       );
       setEditIndex(null);
     } else {
-      setServices((prev) => [...prev, newService]);
+      setServices((prev) => [
+        ...prev,
+        {
+          ...newService,
+          duration: Number(newService.duration),
+          price: Number(newService.price),
+        },
+      ]);
     }
-    setNewService({ name: "", description: "", duration: 0, price: 0 });
+    setNewService({ name: "", description: "", duration: "", price: "" });
   };
 
   const handleEditService = (index: number) => {
-    setNewService(services[index]);
+    setNewService({
+      ...services[index],
+      duration: services[index].duration.toString(),
+      price: services[index].price.toString(),
+    });
     setEditIndex(index);
   };
 
@@ -54,15 +78,28 @@ export default function BookingPage() {
 
   return (
     <div className="p-6 max-w-3xl mx-auto">
+      <div className="mb-6">
+        <ProfileCard />
+      </div>
+
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold">Manage Services</h2>
+        <h2 className="text-xl font-bold">My Services</h2>
         <div className="flex items-center gap-2">
-          <span>Preview</span>
-          <input
+          <span>Click to toggle preview</span>
+          {/* <input
             type="checkbox"
             checked={preview}
             onChange={(e) => setPreview(e.target.checked)}
-          />
+          /> */}
+          <button
+            onClick={() => setPreview((prev) => !prev)}
+            className={`px-4 py-2 rounded-lg ${
+              preview ? "bg-gray-600 text-white" : "bg-black text-white"
+            }`}
+          >
+            <SparklesIcon className="w-4" />
+            {/* {preview ? "Disable Preview" : "Enable Preview"} */}
+          </button>
         </div>
       </div>
 
@@ -88,14 +125,16 @@ export default function BookingPage() {
             placeholder="Duration (mins)"
             value={newService.duration}
             onChange={handleChange}
+            min="0"
             className="mb-2 p-2 border w-full"
           />
           <input
             name="price"
             type="number"
-            placeholder="Price ($)"
+            placeholder="Price (£)"
             value={newService.price}
             onChange={handleChange}
+            min="0"
             className="mb-2 p-2 border w-full"
           />
           <button
@@ -117,7 +156,7 @@ export default function BookingPage() {
               <h3 className="font-semibold">{service.name}</h3>
               <p>{service.description}</p>
               <p className="text-sm text-gray-600">
-                {service.duration} mins - ${service.price}
+                {service.duration} mins - £{service.price}
               </p>
             </div>
             {!preview && (

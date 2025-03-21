@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import { v4 as uuidv4 } from "uuid";
 
 export interface IService extends Document {
+  serviceId: string;
   serviceName: string;
   serviceDescription?: string;
   duration?: string;
@@ -11,6 +12,11 @@ export interface IService extends Document {
 }
 
 export const serviceSchema: Schema = new mongoose.Schema<IService>({
+  serviceId: {
+    type: String,
+    required: true,
+    default: uuidv4,
+  },
   serviceName: {
     type: String,
     required: true,

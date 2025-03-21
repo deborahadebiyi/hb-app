@@ -26,8 +26,8 @@ export default function Onboarding() {
       <h1>Welcome</h1>
       <form action={handleSubmit}>
         <div>
-          <label>Application Name</label>
-          <p>Enter the name of your application.</p>
+          <label>Business Name</label>
+          <p>Enter the name of your business.</p>
           <input type="text" name="applicationName" required />
         </div>
 

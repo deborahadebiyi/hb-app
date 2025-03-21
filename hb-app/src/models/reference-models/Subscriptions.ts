@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export interface IPremium extends Document {
   subscriptionId: string;
+  stripeId: string;
   providerId: string;
   isPremium: boolean;
   premiumStartDate: Date;
@@ -16,6 +17,7 @@ export interface IPremium extends Document {
 
 export interface IUnlimited extends Document {
   subscriptionId: string;
+  stripeId: string;
   providerId: string;
   isUnlimited: boolean;
   unlimitedStartDate: Date;
@@ -32,6 +34,10 @@ export const premiumSubscriptionSchema: Schema = new mongoose.Schema<IPremium>({
     required: true,
     unique: true,
     default: uuidv4(),
+  },
+  stripeId: {
+    type: String,
+    required: true,
   },
   providerId: {
     type: String,
@@ -68,6 +74,10 @@ export const unlimitedSubscriptionSchema: Schema =
       required: true,
       unique: true,
       default: uuidv4(),
+    },
+    stripeId: {
+      type: String,
+      required: true,
     },
     providerId: {
       type: String,
