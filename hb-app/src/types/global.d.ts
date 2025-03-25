@@ -3,8 +3,9 @@ export {};
 declare global {
   interface CustomJwtSessionClaims {
     metadata: {
-      onboardingComplete?: boolean;
-      userRole?: "customer" | "serviceprovider";
+      onboardingComplete: boolean;
+      isSubscribed?: boolean;
+      userRole: "customer" | "serviceprovider";
     };
   }
 }

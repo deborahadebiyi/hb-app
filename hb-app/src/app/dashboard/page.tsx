@@ -1,8 +1,6 @@
 import CopyUrlInput from "@/components/copy-url/CopyUrl";
 import DashboardCarousel from "@/components/navbar/DashboardCarousel";
 
-export const profileCompleteness = () => {};
-
 export default function Dashboard() {
   return (
     <div>
@@ -15,7 +13,6 @@ export default function Dashboard() {
 
       <h4>Manage your bookings and work/life balance in your dashboard</h4>
       <DashboardCarousel />
-      {/* <h4> Your profile is {}% complete</h4>  */}
     </div>
   );
 }

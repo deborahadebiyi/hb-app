@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { Document, Schema } from "mongoose";
 
-export interface IAuditLog {
+export interface IAuditLog extends Document {
   accountId: string;
   eventName: string;
   timestamp: Date;

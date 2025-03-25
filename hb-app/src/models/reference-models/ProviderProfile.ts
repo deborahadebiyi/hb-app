@@ -13,8 +13,11 @@ import { IService, serviceSchema } from "./Service";
 export interface IProviderProfile extends IAccount {
   providerName: string;
   profileImage?: string;
+  businessTelephoneNumber?: string;
   followers: number;
   socialMedia?: ISocialMedia;
+  rating: number;
+  ratingCount: number;
   location: string;
   serviceCategory: string[];
   services: IService[];
@@ -31,6 +34,10 @@ export const providerProfileSchema: Schema =
     profileImage: {
       type: String,
     },
+    businessTelephoneNumber: {
+      type: String,
+      unique: true,
+    },
     followers: {
       type: Number,
       default: 0,
@@ -39,6 +46,14 @@ export const providerProfileSchema: Schema =
     location: {
       type: String,
       required: true,
+    },
+    rating: {
+      type: Number,
+      default: 0,
+    },
+    ratingCount: {
+      type: Number,
+      default: 0,
     },
     serviceCategory: {
       type: [String],

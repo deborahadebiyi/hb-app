@@ -24,13 +24,13 @@ const registerHomeLinksList: RegisterHomeLinks[] = [
     href: "/sign-up",
     buttonDesc: "Register",
   },
-  {
-    userType: "Migrate existing page",
-    description:
-      "Have an existing booking page you want to migrate? We can make the process seamless, click here.",
-    href: "/sign-up",
-    buttonDesc: "Migrate me",
-  },
+  // {
+  //   userType: "Migrate existing page",
+  //   description:
+  //     "Have an existing booking page you want to migrate? We can make the process seamless, click here.",
+  //   href: "/sign-up",
+  //   buttonDesc: "Migrate me",
+  // },
   {
     userType: "Customers",
     description:
@@ -39,13 +39,13 @@ const registerHomeLinksList: RegisterHomeLinks[] = [
     href: "/sign-up",
     buttonDesc: "Register",
   },
-  {
-    userType: "Businesses",
-    description:
-      "Have a business on the high street and wanting to reach new customers? Read more here.",
-    href: "/sign-up",
-    buttonDesc: "Register",
-  },
+  // {
+  //   userType: "Businesses",
+  //   description:
+  //     "Have a business on the high street and wanting to reach new customers? Read more here.",
+  //   href: "/sign-up",
+  //   buttonDesc: "Register",
+  // },
 ];
 
 export default function RegisterHome() {

@@ -8,7 +8,7 @@ import ProviderProfile, {
 export interface IServiceProvider extends IProviderProfile {
   isSubscribed: boolean;
   subscriptionType: string;
-  isPaused: boolean; // in the case of payment failurexs
+  isPaused: boolean; // in the case of payment failures
   extraOfferings?: string[];
   catersTo?: string[];
   headerImage?: string;

@@ -8,7 +8,7 @@ import {
   SparklesIcon,
 } from "@heroicons/react/24/outline";
 import { UserDropdown } from "../dropdown/UserDropdown";
-import { SignedInNavbarProps } from "../types";
+import { SignedInProps } from "../types";
 import { MenuDropdown } from "../dropdown/MenuDropdown";
 
 // Service Provider icons
@@ -39,7 +39,7 @@ export const DefaultNavbar = () => {
   );
 };
 
-export const SPNavbar = ({ role, subscription, name }: SignedInNavbarProps) => {
+export const SPNavbar = ({ role, subscription, name }: SignedInProps) => {
   return (
     <nav className="flex justify-between items-center bg-goldy p-4 !text-white">
       <div className="flex items-left space-x-6">
@@ -64,7 +64,7 @@ export const SPNavbar = ({ role, subscription, name }: SignedInNavbarProps) => {
   );
 };
 
-export const CustomerNavbar = ({ role, name }: SignedInNavbarProps) => {
+export const CustomerNavbar = ({ role, name }: SignedInProps) => {
   return (
     <nav className="flex justify-between items-center bg-goldy p-4 !text-white">
       <div className="flex items-left space-x-6">

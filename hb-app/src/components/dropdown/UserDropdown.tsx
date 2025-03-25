@@ -4,9 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { MenuSignOutButton } from "../sign-out/SignOutButton";
-import { SignedInNavbarProps } from "../types";
+import { SignedInProps } from "../types";
 
-export const UserDropdown = ({ role, name }: SignedInNavbarProps) => {
+export const UserDropdown = ({ role, name }: SignedInProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +45,7 @@ export const UserDropdown = ({ role, name }: SignedInNavbarProps) => {
           className="absolute right-0 mt-2 w-44 bg-white divide-y divide-gray-100 rounded-lg shadow-lg dark:bg-gray-700 dark:divide-gray-600"
         >
           <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-            <p>Hello,{name ? name : "gorgeous"}</p>
+            <p>Hello, {name ? name : "gorgeous"}</p>
           </div>
           {role === "serviceprovider" && (
             <>

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export interface IComment extends Document {
   providerName: string;
+  commentId: string;
   textField: string;
   timestamp: Date;
 }
@@ -13,6 +14,12 @@ export const commentSchema: Schema = new mongoose.Schema<IComment>({
     type: String,
     ref: "ServiceProvider",
     required: true,
+  },
+  commentId: {
+    type: String,
+    required: true,
+    index: true,
+    default: uuidv4(),
   },
   textField: {
     type: String,

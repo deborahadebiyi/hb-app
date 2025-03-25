@@ -1,6 +1,8 @@
-import { IAuditLog } from "@/models/AuditLog";
+//import { IAuditLog } from "@/models/AuditLog";
 
-export default function createAuditLogs(detailsObject: Record<string, any>) {
+export default function createAuditLogs(
+  detailsObject: Record<string, unknown>
+) {
   let auditLog;
   const properties = Object.keys(detailsObject)
     .filter((key) => detailsObject[key] === true)
@@ -40,6 +42,7 @@ export default function createAuditLogs(detailsObject: Record<string, any>) {
         timestamp: new Date(Date.now()),
       };
   }
+  return auditLog;
 }
 
 /**

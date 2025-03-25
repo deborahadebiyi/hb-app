@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export interface IBroadcast extends Document {
   accountId: string;
+  broadcastId: string;
   textField: string;
   timestamp: Date;
 }
@@ -13,6 +14,11 @@ const broadcastSchema: Schema = new mongoose.Schema<IBroadcast>({
     type: String,
     ref: "Account",
     required: true,
+  },
+  broadcastId: {
+    type: String,
+    required: true,
+    default: uuidv4(),
   },
   textField: {
     type: String,

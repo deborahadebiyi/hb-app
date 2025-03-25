@@ -3,10 +3,10 @@ import {
   DocumentDuplicateIcon,
   CalendarDaysIcon,
   ClipboardIcon,
-  SparklesIcon,
-  ChartBarIcon,
-  SpeakerWaveIcon,
-  CheckCircleIcon,
+  // SparklesIcon,
+  // ChartBarIcon,
+  // SpeakerWaveIcon,
+  // CheckCircleIcon,
 } from "@heroicons/react/24/outline";
 
 // Map of links to display in the side navigation.
@@ -19,15 +19,15 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: "My Calendar", href: "/dashboard/calendar", icon: CalendarDaysIcon },
-  { name: "My Roundup", href: "/dashboard/roundup", icon: ChartBarIcon },
-  {
-    name: "Work/Life Balance",
-    href: "/dashboard/worklife-balance",
-    icon: SparklesIcon,
-  },
+  // { name: "My Roundup", href: "/dashboard/roundup", icon: ChartBarIcon },
+  // {
+  //   name: "Work/Life Balance",
+  //   href: "/dashboard/worklife-balance",
+  //   icon: SparklesIcon,
+  // },
   { name: "My Policies", href: "/dashboard/policies", icon: ClipboardIcon },
-  { name: "Broadcast", href: "/dashboard/broadcast", icon: SpeakerWaveIcon },
-  { name: "My Tasks", href: "/dashboard/tasks", icon: CheckCircleIcon },
+  // { name: "Broadcast", href: "/dashboard/broadcast", icon: SpeakerWaveIcon },
+  // { name: "My Tasks", href: "/dashboard/tasks", icon: CheckCircleIcon },
 ];
 
 export default function DashboardCarousel() {
