@@ -1,3 +1,7 @@
+// need functionality to add business profile to customer watchlist
+// to populate profile card i require a routes.ts to get all profile card info
+// import { SignedInProps } from "../types";
+
 export default function ProfileCard() {
   return (
     <div className="w-full bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
@@ -14,6 +18,8 @@ export default function ProfileCard() {
         <span className="text-sm text-gray-500 dark:text-gray-400">
           Visual Designer
         </span>
+        {/* {role === "customer" && (
+          <> */}
         <div className="flex mt-4 md:mt-6">
           <a
             href="#"
@@ -21,7 +27,7 @@ export default function ProfileCard() {
           >
             Add to watchlist
           </a>
-          {/* // need functionality to add business profile to customer watchlist */}
+
           <a
             href="#"
             className="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-black focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
