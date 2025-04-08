@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import ProfileCard from "../../components/profile-card/ProfileCard";
 import { SparklesIcon } from "@heroicons/react/24/outline";
 
