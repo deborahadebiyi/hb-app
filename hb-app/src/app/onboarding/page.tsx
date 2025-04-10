@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+
 import { completeOnboarding } from "./_actions";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -10,13 +11,13 @@ export default function Onboarding() {
   const [error, setError] = useState("");
   const { user } = useUser();
   const router = useRouter();
-
   const [step, setStep] = useState(0);
   const [role, setRole] = useState("");
   const [formData, setFormData] = useState({
     location: "",
     providerName: "",
     dob: "",
+    role: "",
   });
   const steps = ["Role Selection", "Basic Info", "Contact Info", "Confirm"];
 
@@ -40,13 +41,6 @@ export default function Onboarding() {
     }
   };
 
-  const onboardingRedirect = () => {
-    if (role === "serviceprovider") {
-      router.push("/dashboard");
-    } else {
-      router.push("/");
-    }
-  };
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent page reload
 
@@ -61,7 +55,11 @@ export default function Onboarding() {
 
       if (res?.message) {
         await user?.reload();
-        // router.push("/subscribe");
+        if (formData.role === "customer") {
+          router.push("/");
+        } else if (formData.role === "serviceprovider") {
+          router.push("/dashboard");
+        }
       }
 
       if (res?.error) {
@@ -101,23 +99,52 @@ export default function Onboarding() {
             >
               <p className="font-medium">Continue sign up as:</p>
               <div className="space-y-2">
+                {/* <label className="flex items-center space-x-2">
+                  <input
+                    type="radio"
+                    name="role"
+                    value={(formData.role = "customer")}
+                    checked={role === "customer"}
+                    onChange={(e) => setRole(e.target.value)}
+                  />
+                  <span>Customer</span>
+                </label> */}
                 <label className="flex items-center space-x-2">
                   <input
                     type="radio"
                     name="role"
                     value="customer"
                     checked={role === "customer"}
-                    onChange={(e) => setRole(e.target.value)}
+                    onChange={(e) => {
+                      const selectedRole = e.target.value;
+                      setRole(selectedRole);
+                      setFormData((prev) => ({ ...prev, role: selectedRole }));
+                    }}
                   />
                   <span>Customer</span>
                 </label>
+
+                {/* <label className="flex items-center space-x-2">
+                  <input
+                    type="radio"
+                    name="role"
+                    value={(formData.role = "serviceprovider")}
+                    checked={role === "serviceprovider"}
+                    onChange={(e) => setRole(e.target.value)}
+                  />
+                  <span>Service provider</span>
+                </label> */}
                 <label className="flex items-center space-x-2">
                   <input
                     type="radio"
                     name="role"
                     value="serviceprovider"
                     checked={role === "serviceprovider"}
-                    onChange={(e) => setRole(e.target.value)}
+                    onChange={(e) => {
+                      const selectedRole = e.target.value;
+                      setRole(selectedRole);
+                      setFormData((prev) => ({ ...prev, role: selectedRole }));
+                    }}
                   />
                   <span>Service provider</span>
                 </label>
@@ -233,8 +260,8 @@ export default function Onboarding() {
             </button>
           ) : (
             <button
-              type="submit"
-              onClick={onboardingRedirect}
+              // type="submit"
+              // onClick={onboardingRedirect}
               className="px-4 py-2 bg-black text-white rounded"
             >
               Submit

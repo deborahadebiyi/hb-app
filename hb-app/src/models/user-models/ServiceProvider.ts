@@ -9,7 +9,6 @@ export interface IServiceProvider extends IProviderProfile {
   isSubscribed: boolean;
   subscriptionType: string;
   isPaused: boolean; // in the case of payment failures
-  extraOfferings?: string[];
   catersTo?: string[];
   headerImage?: string;
   bookingLink: string;
@@ -34,24 +33,16 @@ export const serviceproviderSchema: Schema =
       type: Boolean,
       default: false,
     },
-    extraOfferings: {
+    catersTo: {
       type: Array,
       enum: [
         "neurodiverse-friendly",
         "child-friendly",
         "pet-friendly",
         "accessible",
-      ],
-    },
-    catersTo: {
-      type: Array,
-      enum: [
-        "afro/natural hair",
-        "type 1 hair",
-        "type 2 hair",
-        "type 3 hair",
-        "type 4 hair",
-        "grey hair",
+        "mobile",
+        "hijabi-friendly",
+        "hard-of-hearing",
       ],
     },
     headerImage: {
